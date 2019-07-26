@@ -2,13 +2,40 @@
 :root {
     --app-bkg-color-1: #FFF3C9;
     --app-bkg-color-2: #FFD445;
+    --app-color-primary: #FB8952;
+    --app-color-white: #FFFFFF;
+
+    --border-radius: 10px;
+
+    --font-size-lg: 24px;
+    --font-size-md: 18px;
+    --font-size-sm: 14px;
+
+    --font-size-input: 38px;
+    --font-line-height: 50px;
+
+    --font-weight-reg: 400;
+    --font-weight-med: 500;
+    --font-weight-bld: 600;
+    --font-weight-blk: 700;
+
+    --box-shadow: 0px 8px 8px rgba(0,0,0,.3);
 }
 
 /* loading google fonts */
-@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,500,700,900&display=swap');
+
+button {
+    padding: 0;
+    border: none;
+    background: none;
+}
 
 .app-body {
     font-family: 'Roboto', sans-serif;
+    font-size: var(--font-size-md);
+    font-weight: var(--font-weight-med);
+    line-height: var(--font-line-height);
     margin: 0;
     background-image: linear-gradient(to bottom right, var(--app-bkg-color-1), var(--app-bkg-color-2));
 }
@@ -43,3 +70,87 @@
         top: 20px;
         right: 20px;
     }
+
+    .app-controllers__views {
+        height: 100%;
+    }
+
+.timestamp {
+    font-size: 1em;
+}
+
+.view {
+    height: 100%;
+}
+
+    .view__content {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .view__top {
+        flex: 1 0 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .view__bottom {
+        flex: 1 0 50%;
+    }
+
+.module {
+    text-align: center;
+}
+    
+    .module__title {
+        font-size: var(--font-size-lg);
+        font-weight: var(--font-weight-bld);
+    }
+
+    .module__text-input {
+        border: solid 4px var(--app-color-primary);
+        background: var(--app-color-white);
+        border-radius: var(--border-radius);
+        position: relative;
+    }
+
+    .module--card {
+        border: solid 4px var(--app-color-primary);
+        border-radius: var(--border-radius);
+        overflow: hidden;
+        box-shadow: var(--box-shadow);
+    }
+
+.user-search {
+    font-size: var(--font-size-input);
+    font-weight: var(--font-weight-blk);
+    width: 75vw;
+    text-align: center;
+    line-height: 92px;
+    height: 92px;
+    border: none;
+    background: none;
+    outline: none;
+    text-transform: uppercase;
+}
+
+.clear-input {
+    position: absolute;
+    top: 20px;
+    right: 10px;
+}
+
+.user-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 100%;
+}
+
+.user-image {
+    display: block;
+}

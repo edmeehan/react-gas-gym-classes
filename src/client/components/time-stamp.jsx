@@ -1,16 +1,17 @@
 import React from 'react';
-import moment from 'moment';
+import {monthLong} from '../utilities';
+// import moment from 'moment';
 
 export default class TimeStamp extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {date: moment()};
+    this.state = {date: new Date()};
   }
 
   componentDidMount() {
     this.timerID = setInterval(
       () => this.tick(),
-      15000 // update four times a minute
+      5000 // update every five secounds
     );
   }
 
@@ -19,12 +20,18 @@ export default class TimeStamp extends React.Component {
   }
 
   tick() {
-    this.setState({date: moment()});
+    this.setState({date: new Date()});
   }
 
   render() {
     return (
-      <span>{this.state.date.format('lll')}</span>
+      <span className="timestamp">
+        {monthLong[this.state.date.getMonth()]}
+        &nbsp;
+        {this.state.date.getDate()}
+        &nbsp;-&nbsp;
+        {this.state.date.getHours()}:{this.state.date.getMinutes()}
+      </span>
     );
   }
 }
