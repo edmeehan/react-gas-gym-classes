@@ -1,8 +1,9 @@
-import * as publicFunctions from './app_routes.js';
+import * as routes from './app_routes.js';
+import * as methods from './app.js';
 
 // Expose public functions
-
-global.doGet = publicFunctions.doGet;
+global.doGet = routes.doGet;
+global.animals = methods.animals;
 
 // global.onOpen = publicFunctions.onOpen;
 // global.openDialog = publicFunctions.openDialog;

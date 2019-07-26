@@ -1,5 +1,45 @@
 /* my style sheet */
-
-body {
-    font-size: 4em;
+:root {
+    --app-bkg-color-1: #FFF3C9;
+    --app-bkg-color-2: #FFD445;
 }
+
+/* loading google fonts */
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+
+.app-body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    background-image: linear-gradient(to bottom right, var(--app-bkg-color-1), var(--app-bkg-color-2));
+}
+
+.app-content {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.app-branding {
+    flex: 1 0 33.3%;
+}
+    .app-branding__logo {
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+.app-controllers {
+    flex: 1 0 66.7%;
+}
+    .app-controllers__restart-btn {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+    }
+
+    .app-controllers__timestamp {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+    }

@@ -1,12 +1,28 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-// import '../styles.css';
+import TimeStamp from './components/time-stamp';
+// import server from './server';
+import './styles.css';
+
+// const {animals} = server;
+
+// animals('hello mom')
+//     .then((e) => console.log(e))
+//     .catch((error) => console.log(error));
 
 ReactDOM.render(
-    <div>
-        <h1>Hello World</h1>
-        <a href="?page=Test">link to other page</a>
-    </div>,
-
-    document.getElementById('index')
+  <div className="app-content">
+    <section className="app-branding">
+      <div className="app-branding__logo">
+        <img src="https://via.placeholder.com/150x150" width="150" height="150" alt="gym logo"/>
+      </div>
+    </section>
+    <section className="app-controllers">
+      <button className="app-controllers__restart-btn"></button>
+      <div className="app-controllers__timestamp">
+        <TimeStamp></TimeStamp>
+      </div>
+    </section>
+  </div>,
+  document.getElementById('index')
 );
