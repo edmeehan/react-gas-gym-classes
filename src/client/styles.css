@@ -89,6 +89,13 @@ button {
         flex-direction: column;
     }
 
+    .view__list {
+        height: 100%;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
     .view__top {
         flex: 1 0 50%;
         display: flex;
@@ -116,11 +123,43 @@ button {
         position: relative;
     }
 
+    .module__list {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-evenly;
+        height: 100%;
+    }
+
+        .module__list--confirm {
+            justify-content: center;
+        }
+
+        .module__list--confirm .module {
+            padding: 12px;
+            height: 60px;
+            margin: 18px;
+        }
+
+    .module__left,
+    .module__right {
+        flex: 1 0 50%;
+        margin: 0!important;
+    }
+
     .module--card {
         border: solid 4px var(--app-color-primary);
         border-radius: var(--border-radius);
         overflow: hidden;
         box-shadow: var(--box-shadow);
+        background: #FFFFFF;
+    }
+
+    .module--split {
+        display: flex;
+        flex-direction: row;
+        box-shadow: none!important;
     }
 
 .user-search {
@@ -142,15 +181,38 @@ button {
     right: 10px;
 }
 
-.user-list {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-evenly;
-    height: 100%;
-}
-
 .user-image {
     display: block;
 }
+
+.class {
+    line-height: 34px;
+    padding: 14px;
+    max-width: 160px;
+    margin-bottom: 18px;
+}
+
+    .class__title {
+        font-size: var(--font-size-lg);
+        font-weight: var(--font-weight-bld);
+        line-height: inherit;
+    }
+
+    .class__time {
+        font-size: var(--font-size-lg);
+        font-weight: var(--font-weight-med);
+        margin-bottom: 18px;
+        line-height: inherit;
+    }
+
+    .class__instructor {
+        font-size: var(--font-size-sm);
+        font-weight: var(--font-weight-bld);
+        line-height: 18px;
+    }
+
+    .class__details {
+        font-size: var(--font-size-sm);
+        font-weight: var(--font-weight-reg);
+        line-height: 18px;
+    }
