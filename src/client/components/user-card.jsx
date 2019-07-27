@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 export default function UserCard(props) {
   return (
-    <div className="module module--card">
+    <div className="module module--card" onClick={props.clickHandler}>
       <img width="150" height="150" alt="user image"
         className="user-image"
         src={props.src}/>
@@ -13,4 +13,5 @@ export default function UserCard(props) {
 
 UserCard.propTypes = {
   src: PropTypes.string,
+  clickHandler: PropTypes.func,
 };

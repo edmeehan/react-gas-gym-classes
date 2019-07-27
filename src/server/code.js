@@ -3,7 +3,9 @@ import * as methods from './app.js';
 
 // Expose public functions
 global.doGet = routes.doGet;
-global.animals = methods.animals;
+global.getRowsInSheetByColumn = methods.getRowsInSheetByColumn;
+global.getRowsInSheet = methods.getRowsInSheet;
+global.test = methods.test;
 
 // global.onOpen = publicFunctions.onOpen;
 // global.openDialog = publicFunctions.openDialog;
