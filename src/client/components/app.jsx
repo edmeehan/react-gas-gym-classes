@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-
 import TimeStamp from './time-stamp';
 import UserSearch from './user-search';
 import UserCard from './user-card';
@@ -7,18 +6,16 @@ import ClassCard from './class-card';
 import ConfirmCard from './confirm-card';
 import server from '../server';
 
-const {getRowsInSheetByColumn, getRowsInSheet} = server;
-
 export default function App() {
   const [member, setMember] = useState([]);
   const [gymClass, setGymClass] = useState([]);
   const [memberList, setMemberList] = useState([]);
   const [gymClassList, setGymClassList] = useState([]);
 
-  const userSearchFormHandler = (event, value) => {
-    const isMemberNumber = !isNaN(value);
+  const {getRowsInSheetByColumn, getCurrentGymClasses} = server;
 
-    getRowsInSheetByColumn('Members', isMemberNumber ? 0 : 2, value)
+  const memberSearchHandler = (event, value = '') => {
+    getRowsInSheetByColumn('Members', (!isNaN(value)) ? 0 : 2, value)
       .then(setMemberList)
       .catch(alert);
 
@@ -27,6 +24,29 @@ export default function App() {
     //   [2891, 'Jake', 'Pallas', 'http://ofad.org/files/imagecache/daily_picture/daily-photo/ofad-photo-of-5693.jpg'],
     //   [2892, 'Stacey', 'Pallas', 'http://ofad.org/files/imagecache/daily_picture/daily-photo/ofad-photo-of-5693.jpg'],
     // ]);
+  };
+
+  const memberSelectHandler = (event, value = []) => {
+    if (Array.isArray(value) && value.length > 0) {
+      setMember(value);
+
+      getCurrentGymClasses()
+        .then((v) => {console.log(v);setGymClassList(v);})
+        .catch(alert);
+
+      // setGymClassList([
+      //   // [Code, Date, Day, Start Time, End Time, Class, Instructor, Details],
+      //   [1.0, null, 0.0, 'Sat Dec 30 12:00:00 GMT-05:00 1899', 'Sat Dec 30 15:00:00 GMT-05:00 1899', 'Boxing', 'John Smith', 'This is the boxing class details.'],
+      //   [2.0, null, 0.0, 'Sat Dec 30 15:00:00 GMT-05:00 1899', 'Sat Dec 30 19:00:00 GMT-05:00 1899', 'Yoga', 'Jess Smith', 'This is the yoga class details.'],
+      //   [3.0, null, 0.0, 'Sat Dec 30 19:00:00 GMT-05:00 1899', 'Sat Dec 30 21:00:00 GMT-05:00 1899', 'Jiu Jitsu', 'Jax Smith', 'This is the jiu jitsu class details.'],
+      // ]);
+    }
+  };
+
+  const gymClassSelectHandler = (event, value = []) => {
+    if (Array.isArray(value) && value.length > 0) {
+      setGymClass(value);
+    }
   };
 
   const resetAppHandler = () => {
@@ -64,7 +84,7 @@ export default function App() {
                 <div className="view__top">
                   <div className="module">
                     <div className="module__title">Please enter your last name or member number.</div>
-                    <UserSearch userSearchFormHandler={userSearchFormHandler} ></UserSearch>
+                    <UserSearch searchHandler={memberSearchHandler} ></UserSearch>
                   </div>
                 </div>
                 <div className="view__bottom">
@@ -74,7 +94,7 @@ export default function App() {
                       <div className="module__list">
                         {memberList.map((member) =>
                           <UserCard
-                            clickHandler={(e) => setMember(member)}
+                            clickHandler={(e) => memberSelectHandler(e, member)}
                             key={member[0].toString()}
                             src={member[3]}></UserCard>
                         )}
@@ -90,31 +110,15 @@ export default function App() {
           {member.length > 0 && !gymClass.length > 0 &&
             <section className="view view--class">
               <div className="module__list">
-                <ClassCard
-                  title="Jiu-Jitsu"
-                  time="6:00 - 7:30"
-                  instructor="Bo Jackson"
-                  details="These are the class details"></ClassCard>
-                <ClassCard
-                  title="Boxing"
-                  time="6:00 - 7:30"
-                  instructor="Bo Jackson"
-                  details="These are the class details"></ClassCard>
-                <ClassCard
-                  title="Yoga"
-                  time="6:00 - 7:30"
-                  instructor="Bo Jackson"
-                  details="These are the class details that are a big longer to drop a line"></ClassCard>
-                <ClassCard
-                  title="Kick Boxing"
-                  time="6:00 - 7:30"
-                  instructor="Bo Jackson"
-                  details="These are the class details"></ClassCard>
-                <ClassCard
-                  title="Strength Training"
-                  time="6:00 - 7:30"
-                  instructor="Bo Jackson"
-                  details="These are the class details"></ClassCard>
+                {gymClassList.length > 0 && gymClassList.map((gymClass) =>
+                  <ClassCard
+                    clickHandler={(e) => gymClassSelectHandler(e, gymClass)}
+                    key={gymClass[0].toString()}
+                    title={gymClass[5]}
+                    time={[gymClass[3], gymClass[4]]}
+                    instructor={gymClass[6]}
+                    details={gymClass[7]}></ClassCard>
+                )}
               </div>
             </section>
           }

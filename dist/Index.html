@@ -5364,7 +5364,10 @@
     "use strict";
     __webpack_require__.r(__webpack_exports__);
     var react = __webpack_require__(0), react_default = __webpack_require__.n(react), react_dom = __webpack_require__(3), react_dom_default = __webpack_require__.n(react_dom);
-    const monthLong = [ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" ];
+    const monthLong = [ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" ], displayTime = dateObj => {
+        let minutes = `0${dateObj.getMinutes()}`.slice(-2);
+        return `${dateObj.getHours()}:${minutes}`;
+    };
     class time_stamp_TimeStamp extends react_default.a.Component {
         constructor(props) {
             super(props), this.state = {
@@ -5385,7 +5388,7 @@
         render() {
             return react_default.a.createElement("span", {
                 className: "timestamp"
-            }, monthLong[this.state.date.getMonth()], " ", this.state.date.getDate(), " - ", this.state.date.getHours(), ":", this.state.date.getMinutes());
+            }, monthLong[this.state.date.getMonth()], " ", this.state.date.getDate(), " - ", displayTime(this.state.date));
         }
     }
     var prop_types = __webpack_require__(1), prop_types_default = __webpack_require__.n(prop_types);
@@ -5395,7 +5398,7 @@
             className: "module__text-input"
         }, react_default.a.createElement("form", {
             onSubmit: event => {
-                event.preventDefault(), 0 !== text.length && props.userSearchFormHandler(event, text);
+                event.preventDefault(), 0 !== text.length && props.searchHandler(event, text);
             }
         }, react_default.a.createElement("input", {
             placeholder: "Start Here",
@@ -5428,12 +5431,13 @@
     }
     function ClassCard(props) {
         return react_default.a.createElement("div", {
-            className: "module module--card class"
+            className: "module module--card class",
+            onClick: props.clickHandler
         }, react_default.a.createElement("div", {
             className: "class__title"
         }, props.title), react_default.a.createElement("div", {
             className: "class__time"
-        }, props.time), react_default.a.createElement("div", {
+        }, `${displayTime(new Date(props.time[0]))} - ${displayTime(new Date(props.time[1]))}`), react_default.a.createElement("div", {
             className: "class__instructor"
         }, props.instructor), react_default.a.createElement("div", {
             className: "class__details"
@@ -5463,15 +5467,16 @@
         })));
     }
     UserSearch.propTypes = {
-        userSearchFormHandler: prop_types_default.a.func
+        searchHandler: prop_types_default.a.func
     }, UserCard.propTypes = {
         src: prop_types_default.a.string,
         clickHandler: prop_types_default.a.func
     }, ClassCard.propTypes = {
         title: prop_types_default.a.string,
-        time: prop_types_default.a.string,
+        time: prop_types_default.a.array,
         instructor: prop_types_default.a.string,
-        details: prop_types_default.a.string
+        details: prop_types_default.a.string,
+        clickHandler: prop_types_default.a.func
     }, ConfirmCard.propTypes = {
         title: prop_types_default.a.string,
         time: prop_types_default.a.string,
@@ -5484,10 +5489,9 @@
         google.script.run.withSuccessHandler(resolve).withFailureHandler(reject)[method](...args);
     })));
     var server = serverMethods;
-    const {getRowsInSheetByColumn: getRowsInSheetByColumn, getRowsInSheet: getRowsInSheet} = server;
     __webpack_require__(11);
     react_dom_default.a.render(react_default.a.createElement(function() {
-        const [member, setMember] = Object(react["useState"])([]), [gymClass, setGymClass] = Object(react["useState"])([]), [memberList, setMemberList] = Object(react["useState"])([]), [gymClassList, setGymClassList] = Object(react["useState"])([]);
+        const [member, setMember] = Object(react["useState"])([]), [gymClass, setGymClass] = Object(react["useState"])([]), [memberList, setMemberList] = Object(react["useState"])([]), [gymClassList, setGymClassList] = Object(react["useState"])([]), {getRowsInSheetByColumn: getRowsInSheetByColumn, getCurrentGymClasses: getCurrentGymClasses} = server;
         return react_default.a.createElement("div", {
             className: "app-content"
         }, react_default.a.createElement("section", {
@@ -5527,9 +5531,8 @@
         }, react_default.a.createElement("div", {
             className: "module__title"
         }, "Please enter your last name or member number."), react_default.a.createElement(UserSearch, {
-            userSearchFormHandler: (event, value) => {
-                const isMemberNumber = !isNaN(value);
-                getRowsInSheetByColumn("Members", isMemberNumber ? 0 : 2, value).then(setMemberList)["catch"](alert);
+            searchHandler: (event, value = "") => {
+                getRowsInSheetByColumn("Members", isNaN(value) ? 2 : 0, value).then(setMemberList)["catch"](alert);
             }
         }))), react_default.a.createElement("div", {
             className: "view__bottom"
@@ -5540,39 +5543,27 @@
         }, "Select your profile photo."), react_default.a.createElement("div", {
             className: "module__list"
         }, memberList.map(member => react_default.a.createElement(UserCard, {
-            clickHandler: e => setMember(member),
+            clickHandler: e => ((event, value = []) => {
+                Array.isArray(value) && value.length > 0 && (setMember(value), getCurrentGymClasses().then(v => {
+                    console.log(v), setGymClassList(v);
+                })["catch"](alert));
+            })(0, member),
             key: member[0].toString(),
             src: member[3]
         }))))))), member.length > 0 && !gymClass.length > 0 && react_default.a.createElement("section", {
             className: "view view--class"
         }, react_default.a.createElement("div", {
             className: "module__list"
-        }, react_default.a.createElement(ClassCard, {
-            title: "Jiu-Jitsu",
-            time: "6:00 - 7:30",
-            instructor: "Bo Jackson",
-            details: "These are the class details"
-        }), react_default.a.createElement(ClassCard, {
-            title: "Boxing",
-            time: "6:00 - 7:30",
-            instructor: "Bo Jackson",
-            details: "These are the class details"
-        }), react_default.a.createElement(ClassCard, {
-            title: "Yoga",
-            time: "6:00 - 7:30",
-            instructor: "Bo Jackson",
-            details: "These are the class details that are a big longer to drop a line"
-        }), react_default.a.createElement(ClassCard, {
-            title: "Kick Boxing",
-            time: "6:00 - 7:30",
-            instructor: "Bo Jackson",
-            details: "These are the class details"
-        }), react_default.a.createElement(ClassCard, {
-            title: "Strength Training",
-            time: "6:00 - 7:30",
-            instructor: "Bo Jackson",
-            details: "These are the class details"
-        }))), member.length > 0 && gymClass.length > 0 && react_default.a.createElement("section", {
+        }, gymClassList.length > 0 && gymClassList.map(gymClass => react_default.a.createElement(ClassCard, {
+            clickHandler: e => ((event, value = []) => {
+                Array.isArray(value) && value.length > 0 && setGymClass(value);
+            })(0, gymClass),
+            key: gymClass[0].toString(),
+            title: gymClass[5],
+            time: [ gymClass[3], gymClass[4] ],
+            instructor: gymClass[6],
+            details: gymClass[7]
+        })))), member.length > 0 && gymClass.length > 0 && react_default.a.createElement("section", {
             className: "view view--confirm"
         }, react_default.a.createElement("div", {
             className: "view__content"

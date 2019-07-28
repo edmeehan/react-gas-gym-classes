@@ -5,12 +5,5 @@ import * as methods from './app.js';
 global.doGet = routes.doGet;
 global.getRowsInSheetByColumn = methods.getRowsInSheetByColumn;
 global.getRowsInSheet = methods.getRowsInSheet;
-global.test = methods.test;
-
-// global.onOpen = publicFunctions.onOpen;
-// global.openDialog = publicFunctions.openDialog;
-// global.openAboutSidebar = publicFunctions.openAboutSidebar;
-// global.getSheetsData = publicFunctions.getSheetsData;
-// global.addSheet = publicFunctions.addSheet;
-// global.deleteSheet = publicFunctions.deleteSheet;
-// global.setActiveSheet = publicFunctions.setActiveSheet;
+global.getSheet = methods.getSheet;
+global.getCurrentGymClasses = methods.getCurrentGymClasses;

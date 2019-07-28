@@ -1,6 +1,5 @@
 import React from 'react';
-import {monthLong} from '../utilities';
-// import moment from 'moment';
+import {monthLong, displayTime} from '../utilities';
 
 export default class TimeStamp extends React.Component {
   constructor(props) {
@@ -30,7 +29,7 @@ export default class TimeStamp extends React.Component {
         &nbsp;
         {this.state.date.getDate()}
         &nbsp;-&nbsp;
-        {this.state.date.getHours()}:{this.state.date.getMinutes()}
+        {displayTime(this.state.date)}
       </span>
     );
   }

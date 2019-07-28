@@ -10,8 +10,8 @@ export default function UserSearch(props) {
     event.preventDefault();
     if (text.length === 0) return;
 
-    props.userSearchFormHandler(event, text);
-    //setText('');
+    props.searchHandler(event, text);
+    // setText('');
   };
 
   const handleClearClick = () => setText('');
@@ -37,5 +37,5 @@ export default function UserSearch(props) {
 }
 
 UserSearch.propTypes = {
-  userSearchFormHandler: PropTypes.func,
+  searchHandler: PropTypes.func,
 };
