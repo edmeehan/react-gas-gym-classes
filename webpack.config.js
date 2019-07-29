@@ -21,21 +21,7 @@ const clientEntrypoints = [
     name: "INDEX - start page",
     entry: "./src/client/index.jsx",
     filename: "Index.html"
-  },{
-    name: "NEXT - testing link page",
-    entry: "./src/client/test.jsx",
-    filename: "Test.html"
-  },
-  // {
-  //   name: "CLIENT - main dialog",
-  //   entry: "./src/client/main.jsx",
-  //   filename: "main.html"
-  // },
-  // {
-  //   name: "CLIENT - about sidebar",
-  //   entry: "./src/client/about.jsx",
-  //   filename: "about.html"
-  // },
+  }
 ];
 
 const sharedConfigSettings = {
