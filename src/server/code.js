@@ -4,6 +4,6 @@ import * as methods from './app.js';
 // Expose public functions
 global.doGet = routes.doGet;
 global.getRowsInSheetByColumn = methods.getRowsInSheetByColumn;
-global.getRowsInSheet = methods.getRowsInSheet;
-global.getSheet = methods.getSheet;
 global.getCurrentGymClasses = methods.getCurrentGymClasses;
+global.getRowsInSheet = methods.getRowsInSheet;
+global.setAttendance = methods.setAttendance;

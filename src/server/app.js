@@ -33,21 +33,21 @@ const getCurrentGymClasses = () => {
   return JSON.parse(JSON.stringify(rows));
 };
 
-const getSheet = (sheetName) => {
-  let spreadSheet = SpreadsheetApp.getActiveSpreadsheet();
-  let sheet = spreadSheet.getSheetByName(sheetName);
-  return sheet.getDataRange().getValues();
+const setAttendance = (newRow = []) => {
+  newRow.unshift(new Date());
+  getSheet('Attendance', false).appendRow(newRow);
+  return true;
 };
 
-// const convertDateObjs = (getValuesReturn = []) => {
-//   return getValuesReturn.map((value) => {
-//     return value.join();
-//   });
-// };
+const getSheet = (sheetName, getValues = true) => {
+  let spreadSheet = SpreadsheetApp.getActiveSpreadsheet();
+  let sheet = spreadSheet.getSheetByName(sheetName);
+  return getValues ? sheet.getDataRange().getValues() : sheet;
+};
 
 export {
   getRowsInSheetByColumn,
-  getRowsInSheet,
-  getSheet,
   getCurrentGymClasses,
+  getRowsInSheet,
+  setAttendance,
 };

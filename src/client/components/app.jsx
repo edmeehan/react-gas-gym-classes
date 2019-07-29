@@ -11,8 +11,9 @@ export default function App() {
   const [gymClass, setGymClass] = useState([]);
   const [memberList, setMemberList] = useState([]);
   const [gymClassList, setGymClassList] = useState([]);
+  const [confirmed, setConfirmed] = useState(false);
 
-  const {getRowsInSheetByColumn, getCurrentGymClasses} = server;
+  const {getRowsInSheetByColumn, getCurrentGymClasses, setAttendance} = server;
 
   const memberSearchHandler = (event, value = '') => {
     getRowsInSheetByColumn('Members', (!isNaN(value)) ? 0 : 2, value)
@@ -31,7 +32,7 @@ export default function App() {
       setMember(value);
 
       getCurrentGymClasses()
-        .then((v) => {console.log(v);setGymClassList(v);})
+        .then(setGymClassList)
         .catch(alert);
 
       // setGymClassList([
@@ -49,7 +50,22 @@ export default function App() {
     }
   };
 
+  const finalConfirmHandler = (event, value = false) => {
+    if (!value) {
+      setGymClass([]);
+    } else {
+      let newAttendanceRow = [member[0], gymClass[0]];
+      setAttendance(newAttendanceRow)
+        .then(() => {
+          setConfirmed(true);
+          setTimeout(() => resetAppHandler(), 5000);
+        })
+        .catch(alert);
+    }
+  };
+
   const resetAppHandler = () => {
+    setConfirmed(false);
     setMember([]);
     setGymClass([]);
     setMemberList([]);
@@ -129,31 +145,30 @@ export default function App() {
               <div className="view__content">
                 <div className="view__top">
                   <ConfirmCard
-                    title="Strength Training"
-                    time="6:00 - 7:30"
-                    instructor="Bo Jackson"
-                    details="These are the class details"
-                    src="https://via.placeholder.com/150x150?text=Member+One"></ConfirmCard>
+                    title={gymClass[5]}
+                    time={[gymClass[3], gymClass[4]]}
+                    instructor={gymClass[6]}
+                    details={gymClass[7]}
+                    src={member[3]}></ConfirmCard>
                 </div>
                 <div className="view__bottom">
-                  
-                  {/* PER CONFIRM */}
+                  {!confirmed ? (
                   <div className="module">
                     <div className="module__title">Confirm your class attendance.</div>
                     <div className="module__list module__list--confirm">
-                      <div className="module module--card">
+                      <div onClick={(e) => finalConfirmHandler(e, false)} className="module module--card">
                         <svg width="60px" height="60px" viewBox="0 0 56 56"><use xlinkHref="#icon-cancel"></use></svg>
                       </div>
-                      <div className="module module--card">
+                      <div onClick={(e) => finalConfirmHandler(e, true)} className="module module--card">
                         <svg width="60px" height="60px" viewBox="0 0 61 46"><use xlinkHref="#icon-confirm"></use></svg>
                       </div>
                     </div>
                   </div>
-
-                  {/* POST CONFIRM */}
+                  ) : (
                   <div className="module">
                     <div className="module__title">Thank you for attending class today!</div>
                   </div>
+                  )}
                 </div>
               </div>
             </section>

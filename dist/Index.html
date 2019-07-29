@@ -5452,7 +5452,7 @@
             className: "class__title"
         }, props.title), react_default.a.createElement("div", {
             className: "class__time"
-        }, props.time), react_default.a.createElement("div", {
+        }, `${displayTime(new Date(props.time[0]))} - ${displayTime(new Date(props.time[1]))}`), react_default.a.createElement("div", {
             className: "class__instructor"
         }, props.instructor), react_default.a.createElement("div", {
             className: "class__details"
@@ -5479,7 +5479,7 @@
         clickHandler: prop_types_default.a.func
     }, ConfirmCard.propTypes = {
         title: prop_types_default.a.string,
-        time: prop_types_default.a.string,
+        time: prop_types_default.a.array,
         instructor: prop_types_default.a.string,
         details: prop_types_default.a.string,
         src: prop_types_default.a.string
@@ -5491,7 +5491,16 @@
     var server = serverMethods;
     __webpack_require__(11);
     react_dom_default.a.render(react_default.a.createElement(function() {
-        const [member, setMember] = Object(react["useState"])([]), [gymClass, setGymClass] = Object(react["useState"])([]), [memberList, setMemberList] = Object(react["useState"])([]), [gymClassList, setGymClassList] = Object(react["useState"])([]), {getRowsInSheetByColumn: getRowsInSheetByColumn, getCurrentGymClasses: getCurrentGymClasses} = server;
+        const [member, setMember] = Object(react["useState"])([]), [gymClass, setGymClass] = Object(react["useState"])([]), [memberList, setMemberList] = Object(react["useState"])([]), [gymClassList, setGymClassList] = Object(react["useState"])([]), [confirmed, setConfirmed] = Object(react["useState"])(!1), {getRowsInSheetByColumn: getRowsInSheetByColumn, getCurrentGymClasses: getCurrentGymClasses, setAttendance: setAttendance} = server, finalConfirmHandler = (event, value = !1) => {
+            if (value) {
+                let newAttendanceRow = [ member[0], gymClass[0] ];
+                setAttendance(newAttendanceRow).then(() => {
+                    setConfirmed(!0), setTimeout(() => resetAppHandler(), 5e3);
+                })["catch"](alert);
+            } else setGymClass([]);
+        }, resetAppHandler = () => {
+            setConfirmed(!1), setMember([]), setGymClass([]), setMemberList([]), setGymClassList([]);
+        };
         return react_default.a.createElement("div", {
             className: "app-content"
         }, react_default.a.createElement("section", {
@@ -5507,9 +5516,7 @@
             className: "app-controllers"
         }, (member.length > 0 || gymClass.length > 0) && react_default.a.createElement("button", {
             className: "app-controllers__restart-btn",
-            onClick: () => {
-                setMember([]), setGymClass([]), setMemberList([]), setGymClassList([]);
-            }
+            onClick: resetAppHandler
         }, react_default.a.createElement("svg", {
             width: "56px",
             height: "56px",
@@ -5544,9 +5551,7 @@
             className: "module__list"
         }, memberList.map(member => react_default.a.createElement(UserCard, {
             clickHandler: e => ((event, value = []) => {
-                Array.isArray(value) && value.length > 0 && (setMember(value), getCurrentGymClasses().then(v => {
-                    console.log(v), setGymClassList(v);
-                })["catch"](alert));
+                Array.isArray(value) && value.length > 0 && (setMember(value), getCurrentGymClasses().then(setGymClassList)["catch"](alert));
             })(0, member),
             key: member[0].toString(),
             src: member[3]
@@ -5570,20 +5575,25 @@
         }, react_default.a.createElement("div", {
             className: "view__top"
         }, react_default.a.createElement(ConfirmCard, {
-            title: "Strength Training",
-            time: "6:00 - 7:30",
-            instructor: "Bo Jackson",
-            details: "These are the class details",
-            src: "https://via.placeholder.com/150x150?text=Member+One"
+            title: gymClass[5],
+            time: [ gymClass[3], gymClass[4] ],
+            instructor: gymClass[6],
+            details: gymClass[7],
+            src: member[3]
         })), react_default.a.createElement("div", {
             className: "view__bottom"
+        }, confirmed ? react_default.a.createElement("div", {
+            className: "module"
         }, react_default.a.createElement("div", {
+            className: "module__title"
+        }, "Thank you for attending class today!")) : react_default.a.createElement("div", {
             className: "module"
         }, react_default.a.createElement("div", {
             className: "module__title"
         }, "Confirm your class attendance."), react_default.a.createElement("div", {
             className: "module__list module__list--confirm"
         }, react_default.a.createElement("div", {
+            onClick: e => finalConfirmHandler(0, !1),
             className: "module module--card"
         }, react_default.a.createElement("svg", {
             width: "60px",
@@ -5592,6 +5602,7 @@
         }, react_default.a.createElement("use", {
             xlinkHref: "#icon-cancel"
         }))), react_default.a.createElement("div", {
+            onClick: e => finalConfirmHandler(0, !0),
             className: "module module--card"
         }, react_default.a.createElement("svg", {
             width: "60px",
@@ -5599,11 +5610,7 @@
             viewBox: "0 0 61 46"
         }, react_default.a.createElement("use", {
             xlinkHref: "#icon-confirm"
-        }))))), react_default.a.createElement("div", {
-            className: "module"
-        }, react_default.a.createElement("div", {
-            className: "module__title"
-        }, "Thank you for attending class today!"))))))));
+        })))))))))));
     }, null), document.getElementById("index"));
 } ]);</script></body>
 </html>

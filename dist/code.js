@@ -2,11 +2,11 @@ function doGet() {
 }
 function getRowsInSheetByColumn() {
 }
+function getCurrentGymClasses() {
+}
 function getRowsInSheet() {
 }
-function getSheet() {
-}
-function getCurrentGymClasses() {
+function setAttendance() {
 }!function(e, a) {
     for (var i in a) e[i] = a[i];
 }(this, function(modules) {
@@ -58,12 +58,12 @@ function getCurrentGymClasses() {
     "use strict";
     __webpack_require__.d(__webpack_exports__, "c", function() {
         return getRowsInSheetByColumn;
+    }), __webpack_require__.d(__webpack_exports__, "a", function() {
+        return getCurrentGymClasses;
     }), __webpack_require__.d(__webpack_exports__, "b", function() {
         return getRowsInSheet;
     }), __webpack_require__.d(__webpack_exports__, "d", function() {
-        return getSheet;
-    }), __webpack_require__.d(__webpack_exports__, "a", function() {
-        return getCurrentGymClasses;
+        return setAttendance;
     });
     var getRowsInSheetByColumn = function(sheetName, col, data) {
         var ignoreCase = !(arguments.length > 3 && arguments[3] !== undefined) || arguments[3], rows = getSheet(sheetName);
@@ -80,8 +80,13 @@ function getCurrentGymClasses() {
     }, getCurrentGymClasses = function() {
         var rows = getSheet("Schedule");
         return rows.shift(), JSON.parse(JSON.stringify(rows));
+    }, setAttendance = function() {
+        var newRow = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+        return newRow.unshift(new Date()), getSheet("Attendance", !1).appendRow(newRow), 
+        !0;
     }, getSheet = function(sheetName) {
-        return SpreadsheetApp.getActiveSpreadsheet().getSheetByName(sheetName).getDataRange().getValues();
+        var getValues = !(arguments.length > 1 && arguments[1] !== undefined) || arguments[1], sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName(sheetName);
+        return getValues ? sheet.getDataRange().getValues() : sheet;
     };
 }, function(module, __webpack_exports__, __webpack_require__) {
     "use strict";
@@ -97,8 +102,8 @@ function getCurrentGymClasses() {
     __webpack_require__.r(__webpack_exports__), function(global) {
         var _app_routes_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1), _app_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(0);
         global.doGet = _app_routes_js__WEBPACK_IMPORTED_MODULE_0__["a"], global.getRowsInSheetByColumn = _app_js__WEBPACK_IMPORTED_MODULE_1__["c"], 
-        global.getRowsInSheet = _app_js__WEBPACK_IMPORTED_MODULE_1__["b"], global.getSheet = _app_js__WEBPACK_IMPORTED_MODULE_1__["d"], 
-        global.getCurrentGymClasses = _app_js__WEBPACK_IMPORTED_MODULE_1__["a"];
+        global.getCurrentGymClasses = _app_js__WEBPACK_IMPORTED_MODULE_1__["a"], global.getRowsInSheet = _app_js__WEBPACK_IMPORTED_MODULE_1__["b"], 
+        global.setAttendance = _app_js__WEBPACK_IMPORTED_MODULE_1__["d"];
     }.call(this, __webpack_require__(3));
 }, function(module, exports) {
     var g;
