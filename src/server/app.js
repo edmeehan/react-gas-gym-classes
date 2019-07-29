@@ -28,9 +28,42 @@ const getRowsInSheet = (sheetName, data, ignoreCase = true) => {
 
 const getCurrentGymClasses = () => {
   let rows = getSheet('Schedule');
-  rows.shift(); // remove the first item with all the labels
+  let now = new Date();
+  let timeMath = (dateObj) => (dateObj.getHours() * 100) + dateObj.getMinutes();
+  rows.shift();
 
-  return JSON.parse(JSON.stringify(rows));
+  return JSON.parse(JSON.stringify(rows.filter((item) => {
+    let today = false;
+
+    // check if daily class
+    if (item[1] === '' && item[2] === '') {
+      today = true;
+    }
+
+    // check if day of week class
+    if (item[2] === now.getDay()) {
+      today = true;
+    }
+
+    // check if special event class
+    if (item[1]) {
+      let date = new Date(item[1]);
+      if ((date.getFullYear() === now.getFullYear()) &&
+        ((date.getMonth() === now.getMonth())) &&
+        ((date.getDate() === now.getDate()))
+      ) {
+        today = true;
+      }
+    }
+
+    // if the class is today - show classes that have not happened yet
+    if (today) {
+      let end = timeMath(new Date(item[4]));
+      let stamp = timeMath(now);
+
+      return (stamp < end - 5);
+    }
+  })));
 };
 
 const setAttendance = (newRow = []) => {

@@ -78,8 +78,21 @@ function setAttendance() {
             return ignoreCase ? -1 !== testValue.toUpperCase().indexOf(value.toUpperCase()) : -1 !== testValue.indexOf(value);
         })));
     }, getCurrentGymClasses = function() {
-        var rows = getSheet("Schedule");
-        return rows.shift(), JSON.parse(JSON.stringify(rows));
+        var rows = getSheet("Schedule"), now = new Date(), timeMath = function(dateObj) {
+            return 100 * dateObj.getHours() + dateObj.getMinutes();
+        };
+        return rows.shift(), JSON.parse(JSON.stringify(rows.filter(function(item) {
+            var today = !1;
+            if ("" === item[1] && "" === item[2] && (today = !0), item[2] === now.getDay() && (today = !0), 
+            item[1]) {
+                var date = new Date(item[1]);
+                date.getFullYear() === now.getFullYear() && date.getMonth() === now.getMonth() && date.getDate() === now.getDate() && (today = !0);
+            }
+            if (today) {
+                var end = timeMath(new Date(item[4]));
+                return timeMath(now) < end - 5;
+            }
+        })));
     }, setAttendance = function() {
         var newRow = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
         return newRow.unshift(new Date()), getSheet("Attendance", !1).appendRow(newRow), 
