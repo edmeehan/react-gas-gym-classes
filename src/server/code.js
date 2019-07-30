@@ -5,5 +5,6 @@ import * as methods from './app.js';
 global.doGet = routes.doGet;
 global.getRowsInSheetByColumn = methods.getRowsInSheetByColumn;
 global.getCurrentGymClasses = methods.getCurrentGymClasses;
+global.getCurrentCalenderEvents = methods.getCurrentCalenderEvents;
 global.getRowsInSheet = methods.getRowsInSheet;
 global.setAttendance = methods.setAttendance;

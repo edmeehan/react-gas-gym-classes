@@ -19,7 +19,7 @@ export default function UserSearch(props) {
   return (
     <div className="module__text-input">
       <form onSubmit={handleSubmit}>
-        <input placeholder="Start Here" type="text"
+        <input placeholder="Tap here to start" type="text"
           className="user-search"
           onChange={handleChange}
           value={text} />

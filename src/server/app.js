@@ -66,6 +66,23 @@ const getCurrentGymClasses = () => {
   })));
 };
 
+const getCurrentCalenderEvents = (rangeInHours = 2) => {
+  let calendar = CalendarApp.getCalendarsByName('React App Gym Class Schedule');
+  let now = new Date();
+  let fromNow = new Date(now.getTime() + (rangeInHours * 60 * 60 * 1000));
+  let events = calendar[0].getEvents(now, fromNow).map((event) => {
+    return {
+      id: event.getId(),
+      title: event.getTitle(),
+      start: event.getStartTime(),
+      end: event.getEndTime(),
+      details: event.getDescription(),
+    };
+  });
+
+  return JSON.parse(JSON.stringify(events));
+};
+
 const setAttendance = (newRow = []) => {
   newRow.unshift(new Date());
   getSheet('Attendance', false).appendRow(newRow);
@@ -79,6 +96,7 @@ const getSheet = (sheetName, getValues = true) => {
 };
 
 export {
+  getCurrentCalenderEvents,
   getRowsInSheetByColumn,
   getCurrentGymClasses,
   getRowsInSheet,

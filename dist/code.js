@@ -4,6 +4,8 @@ function getRowsInSheetByColumn() {
 }
 function getCurrentGymClasses() {
 }
+function getCurrentCalenderEvents() {
+}
 function getRowsInSheet() {
 }
 function setAttendance() {
@@ -56,13 +58,15 @@ function setAttendance() {
     }, __webpack_require__.p = "", __webpack_require__(__webpack_require__.s = 2);
 }([ function(module, __webpack_exports__, __webpack_require__) {
     "use strict";
-    __webpack_require__.d(__webpack_exports__, "c", function() {
-        return getRowsInSheetByColumn;
-    }), __webpack_require__.d(__webpack_exports__, "a", function() {
-        return getCurrentGymClasses;
-    }), __webpack_require__.d(__webpack_exports__, "b", function() {
-        return getRowsInSheet;
+    __webpack_require__.d(__webpack_exports__, "a", function() {
+        return getCurrentCalenderEvents;
     }), __webpack_require__.d(__webpack_exports__, "d", function() {
+        return getRowsInSheetByColumn;
+    }), __webpack_require__.d(__webpack_exports__, "b", function() {
+        return getCurrentGymClasses;
+    }), __webpack_require__.d(__webpack_exports__, "c", function() {
+        return getRowsInSheet;
+    }), __webpack_require__.d(__webpack_exports__, "e", function() {
         return setAttendance;
     });
     var getRowsInSheetByColumn = function(sheetName, col, data) {
@@ -93,6 +97,17 @@ function setAttendance() {
                 return timeMath(now) < end - 5;
             }
         })));
+    }, getCurrentCalenderEvents = function() {
+        var rangeInHours = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 2, calendar = CalendarApp.getCalendarsByName("React App Gym Class Schedule"), now = new Date(), fromNow = new Date(now.getTime() + 60 * rangeInHours * 60 * 1e3), events = calendar[0].getEvents(now, fromNow).map(function(event) {
+            return {
+                id: event.getId(),
+                title: event.getTitle(),
+                start: event.getStartTime(),
+                end: event.getEndTime(),
+                details: event.getDescription()
+            };
+        });
+        return JSON.parse(JSON.stringify(events));
     }, setAttendance = function() {
         var newRow = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
         return newRow.unshift(new Date()), getSheet("Attendance", !1).appendRow(newRow), 
@@ -107,16 +122,16 @@ function setAttendance() {
         return doGet;
     });
     var doGet = function(e) {
-        var template = e.parameter.page ? HtmlService.createTemplateFromFile(e.parameter.page) : HtmlService.createTemplateFromFile("Index");
+        var template = e && e.parameter && e.parameter.page ? HtmlService.createTemplateFromFile(e.parameter.page) : HtmlService.createTemplateFromFile("Index");
         return template.data = [], template.evaluate();
     };
 }, function(module, __webpack_exports__, __webpack_require__) {
     "use strict";
     __webpack_require__.r(__webpack_exports__), function(global) {
         var _app_routes_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1), _app_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(0);
-        global.doGet = _app_routes_js__WEBPACK_IMPORTED_MODULE_0__["a"], global.getRowsInSheetByColumn = _app_js__WEBPACK_IMPORTED_MODULE_1__["c"], 
-        global.getCurrentGymClasses = _app_js__WEBPACK_IMPORTED_MODULE_1__["a"], global.getRowsInSheet = _app_js__WEBPACK_IMPORTED_MODULE_1__["b"], 
-        global.setAttendance = _app_js__WEBPACK_IMPORTED_MODULE_1__["d"];
+        global.doGet = _app_routes_js__WEBPACK_IMPORTED_MODULE_0__["a"], global.getRowsInSheetByColumn = _app_js__WEBPACK_IMPORTED_MODULE_1__["d"], 
+        global.getCurrentGymClasses = _app_js__WEBPACK_IMPORTED_MODULE_1__["b"], global.getCurrentCalenderEvents = _app_js__WEBPACK_IMPORTED_MODULE_1__["a"], 
+        global.getRowsInSheet = _app_js__WEBPACK_IMPORTED_MODULE_1__["c"], global.setAttendance = _app_js__WEBPACK_IMPORTED_MODULE_1__["e"];
     }.call(this, __webpack_require__(3));
 }, function(module, exports) {
     var g;

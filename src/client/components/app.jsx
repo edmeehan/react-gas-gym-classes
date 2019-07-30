@@ -1,73 +1,90 @@
 import React, {useState} from 'react';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import TimeStamp from './time-stamp';
 import UserSearch from './user-search';
 import UserCard from './user-card';
 import ClassCard from './class-card';
 import ConfirmCard from './confirm-card';
 import server from '../server';
+import {devMemberList, devCalenderClassList} from '../utilities';
 
 export default function App() {
   const [member, setMember] = useState([]);
-  const [gymClass, setGymClass] = useState([]);
+  const [gymClass, setGymClass] = useState({});
   const [memberList, setMemberList] = useState([]);
   const [gymClassList, setGymClassList] = useState([]);
   const [confirmed, setConfirmed] = useState(false);
-
-  const {getRowsInSheetByColumn, getCurrentGymClasses, setAttendance} = server;
+  const [loading, setLoading] = useState(false);
 
   const memberSearchHandler = (event, value = '') => {
-    getRowsInSheetByColumn('Members', (!isNaN(value)) ? 0 : 2, value)
-      .then(setMemberList)
-      .catch(alert);
-
-    // setMemberList([
-    //   [2890, 'John', 'Pallas', 'http://ofad.org/files/imagecache/daily_picture/daily-photo/ofad-photo-of-5693.jpg'],
-    //   [2891, 'Jake', 'Pallas', 'http://ofad.org/files/imagecache/daily_picture/daily-photo/ofad-photo-of-5693.jpg'],
-    //   [2892, 'Stacey', 'Pallas', 'http://ofad.org/files/imagecache/daily_picture/daily-photo/ofad-photo-of-5693.jpg'],
-    // ]);
+    setLoading(true);
+    // ----------------- env conditional
+    if (process.env.NODE_ENV === 'production' && google) {
+      server.getRowsInSheetByColumn('Members', (!isNaN(value)) ? 0 : 2, value)
+        .then((value) => {
+          setLoading(false);
+          console.log('members', value);
+          setMemberList(value);
+        })
+        .catch(alert);
+    } else {
+      setMemberList(devMemberList);
+      setTimeout(() => setLoading(false), 2000);
+    }
   };
 
   const memberSelectHandler = (event, value = []) => {
     if (Array.isArray(value) && value.length > 0) {
       setMember(value);
-
-      getCurrentGymClasses()
-        .then(setGymClassList)
-        .catch(alert);
-
-      // setGymClassList([
-      //   // [Code, Date, Day, Start Time, End Time, Class, Instructor, Details],
-      //   [1.0, null, 0.0, 'Sat Dec 30 12:00:00 GMT-05:00 1899', 'Sat Dec 30 15:00:00 GMT-05:00 1899', 'Boxing', 'John Smith', 'This is the boxing class details.'],
-      //   [2.0, null, 0.0, 'Sat Dec 30 15:00:00 GMT-05:00 1899', 'Sat Dec 30 19:00:00 GMT-05:00 1899', 'Yoga', 'Jess Smith', 'This is the yoga class details.'],
-      //   [3.0, null, 0.0, 'Sat Dec 30 19:00:00 GMT-05:00 1899', 'Sat Dec 30 21:00:00 GMT-05:00 1899', 'Jiu Jitsu', 'Jax Smith', 'This is the jiu jitsu class details.'],
-      // ]);
+      setLoading(true);
+      // ----------------- env conditional
+      if (process.env.NODE_ENV === 'production' && google) {
+        server.getCurrentCalenderEvents(2)
+          .then((value) => {
+            setLoading(false);
+            setGymClassList(value);
+          })
+          .catch(alert);
+      } else {
+        setGymClassList(devCalenderClassList);
+        setTimeout(() => setLoading(false), 2000);
+      }
     }
   };
 
-  const gymClassSelectHandler = (event, value = []) => {
-    if (Array.isArray(value) && value.length > 0) {
-      setGymClass(value);
-    }
+  const gymClassSelectHandler = (event, value = {}) => {
+    setGymClass(value);
   };
 
   const finalConfirmHandler = (event, value = false) => {
+    let donezo = () => {
+      setLoading(true);
+      setConfirmed(true);
+      setTimeout(() => resetAppHandler(), 3000);
+    };
+
     if (!value) {
       setGymClass([]);
     } else {
-      let newAttendanceRow = [member[0], gymClass[0]];
-      setAttendance(newAttendanceRow)
-        .then(() => {
-          setConfirmed(true);
-          setTimeout(() => resetAppHandler(), 5000);
-        })
-        .catch(alert);
+      // pass member and class id's for attendance
+      let newAttendanceRow = [member[0], gymClass.id];
+      // ----------------- env conditional
+      if (process.env.NODE_ENV === 'production' && google) {
+        server.setAttendance(newAttendanceRow)
+          .then(donezo)
+          .catch(alert);
+      } else {
+        donezo();
+      }
     }
   };
 
   const resetAppHandler = () => {
+    // reset state to defaults
     setConfirmed(false);
+    setLoading(false);
     setMember([]);
-    setGymClass([]);
+    setGymClass({});
     setMemberList([]);
     setGymClassList([]);
   };
@@ -76,11 +93,11 @@ export default function App() {
     <div className="app-content">
       <section className="app-branding">
         <div className="app-branding__logo">
-          <img src="https://via.placeholder.com/200x200" width="200" height="200" alt="gym logo"/>
+          <img src="https://pixabay.com/get/57e0d14b4257ae14f1dc8460825668204022dfe05555754a76287cdd/gym-1048852_640.png" width="200" height="200" alt="gym logo"/>
         </div>
       </section>
       <div className="app-controllers">
-        {(member.length > 0 || gymClass.length > 0) &&
+        {(member.length > 0 || Object.values(gymClass).length > 0) &&
           <button className="app-controllers__restart-btn"
             onClick={resetAppHandler}>
             <svg width="56px" height="56px" viewBox="0 0 56 56">
@@ -91,22 +108,34 @@ export default function App() {
         <div className="app-controllers__timestamp">
           <TimeStamp></TimeStamp>
         </div>
+
+        <ReactCSSTransitionGroup
+          transitionName="slide"
+          transitionEnterTimeout={500}
+          transitionLeaveTimeout={300}>
+          {loading &&
+          <div key={1} className="app-controllers__loading">
+            This is the loading animation
+          </div>
+          }
+        </ReactCSSTransitionGroup>
+
         <div className="app-controllers__views">
 
           {/* USER SELECTION */}
-          {!member.length > 0 && !gymClass.length > 0 &&
+          {!member.length > 0 && !Object.values(gymClass).length > 0 &&
             <section className="view view--user">
               <div className="view__content">
                 <div className="view__top">
                   <div className="module">
-                    <div className="module__title">Please enter your last name or member number.</div>
+                    <div className="module__title">Please enter your LAST NAME or MEMBER NUMBER.</div>
                     <UserSearch searchHandler={memberSearchHandler} ></UserSearch>
                   </div>
                 </div>
                 <div className="view__bottom">
                   {memberList.length > 0 &&
                     <div className="module">
-                      <div className="module__title">Select your profile photo.</div>
+                      <div className="module__title">Tap to select your photo.</div>
                       <div className="module__list">
                         {memberList.map((member) =>
                           <UserCard
@@ -123,32 +152,32 @@ export default function App() {
           }
 
           {/* CLASS SELECTION */}
-          {member.length > 0 && !gymClass.length > 0 &&
+          {member.length > 0 && !Object.values(gymClass).length > 0 &&
             <section className="view view--class">
               <div className="module__list">
                 {gymClassList.length > 0 && gymClassList.map((gymClass) =>
                   <ClassCard
                     clickHandler={(e) => gymClassSelectHandler(e, gymClass)}
-                    key={gymClass[0].toString()}
-                    title={gymClass[5]}
-                    time={[gymClass[3], gymClass[4]]}
-                    instructor={gymClass[6]}
-                    details={gymClass[7]}></ClassCard>
+                    key={gymClass.id.toString()}
+                    title={gymClass.title}
+                    time={[gymClass.start, gymClass.end]}
+                    // instructor={gymClass[6]}
+                    details={gymClass.details}></ClassCard>
                 )}
               </div>
             </section>
           }
 
           {/* CONFIRM SELECTION */}
-          {member.length > 0 && gymClass.length > 0 &&
+          {member.length > 0 && Object.values(gymClass).length > 0 &&
             <section className="view view--confirm">
               <div className="view__content">
                 <div className="view__top">
                   <ConfirmCard
-                    title={gymClass[5]}
-                    time={[gymClass[3], gymClass[4]]}
-                    instructor={gymClass[6]}
-                    details={gymClass[7]}
+                    title={gymClass.title}
+                    time={[gymClass.start, gymClass.end]}
+                    // instructor={gymClass[6]}
+                    details={gymClass.details}
                     src={member[3]}></ConfirmCard>
                 </div>
                 <div className="view__bottom">

@@ -75,12 +75,27 @@
         return __webpack_require__.d(getter, "a", getter), getter;
     }, __webpack_require__.o = function(object, property) {
         return Object.prototype.hasOwnProperty.call(object, property);
-    }, __webpack_require__.p = "", __webpack_require__(__webpack_require__.s = 16);
+    }, __webpack_require__.p = "", __webpack_require__(__webpack_require__.s = 31);
 }([ function(module, exports, __webpack_require__) {
     "use strict";
-    module.exports = __webpack_require__(4);
+    module.exports = __webpack_require__(8);
 }, function(module, exports, __webpack_require__) {
-    module.exports = __webpack_require__(9)();
+    module.exports = __webpack_require__(14)();
+}, function(module, exports) {
+    module.exports = function(obj) {
+        return obj && obj.__esModule ? obj : {
+            "default": obj
+        };
+    };
+}, function(module, exports, __webpack_require__) {
+    "use strict";
+    !function checkDCE() {
+        if ("undefined" != typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ && "function" == typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.checkDCE) try {
+            __REACT_DEVTOOLS_GLOBAL_HOOK__.checkDCE(checkDCE);
+        } catch (err) {
+            console.error(err);
+        }
+    }(), module.exports = __webpack_require__(9);
 }, function(module, exports, __webpack_require__) {
     "use strict";
     var getOwnPropertySymbols = Object.getOwnPropertySymbols, hasOwnProperty = Object.prototype.hasOwnProperty, propIsEnumerable = Object.prototype.propertyIsEnumerable;
@@ -115,16 +130,46 @@
     };
 }, function(module, exports, __webpack_require__) {
     "use strict";
-    !function checkDCE() {
-        if ("undefined" != typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ && "function" == typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.checkDCE) try {
-            __REACT_DEVTOOLS_GLOBAL_HOOK__.checkDCE(checkDCE);
-        } catch (err) {
-            console.error(err);
-        }
-    }(), module.exports = __webpack_require__(5);
+    exports.__esModule = !0, exports["default"] = void 0;
+    var _default = !("undefined" == typeof window || !window.document || !window.document.createElement);
+    exports["default"] = _default, module.exports = exports["default"];
 }, function(module, exports, __webpack_require__) {
     "use strict";
-    var k = __webpack_require__(2), n = "function" == typeof Symbol && Symbol["for"], p = n ? Symbol["for"]("react.element") : 60103, q = n ? Symbol["for"]("react.portal") : 60106, r = n ? Symbol["for"]("react.fragment") : 60107, t = n ? Symbol["for"]("react.strict_mode") : 60108, u = n ? Symbol["for"]("react.profiler") : 60114, v = n ? Symbol["for"]("react.provider") : 60109, w = n ? Symbol["for"]("react.context") : 60110, x = n ? Symbol["for"]("react.concurrent_mode") : 60111, y = n ? Symbol["for"]("react.forward_ref") : 60112, z = n ? Symbol["for"]("react.suspense") : 60113, aa = n ? Symbol["for"]("react.memo") : 60115, ba = n ? Symbol["for"]("react.lazy") : 60116, A = "function" == typeof Symbol && Symbol.iterator;
+    exports.__esModule = !0, exports.nameShape = undefined, exports.transitionTimeout = function(transitionType) {
+        var timeoutPropName = "transition" + transitionType + "Timeout", enabledPropName = "transition" + transitionType;
+        return function(props) {
+            if (props[enabledPropName]) {
+                if (null == props[timeoutPropName]) return new Error(timeoutPropName + " wasn't supplied to CSSTransitionGroup: this can cause unreliable animations and won't be supported in a future version of React. See https://fb.me/react-animation-transition-group-timeout for more information.");
+                if ("number" != typeof props[timeoutPropName]) return new Error(timeoutPropName + " must be a number (in milliseconds)");
+            }
+            return null;
+        };
+    };
+    _interopRequireDefault(__webpack_require__(0));
+    var _propTypes2 = _interopRequireDefault(__webpack_require__(1));
+    function _interopRequireDefault(obj) {
+        return obj && obj.__esModule ? obj : {
+            "default": obj
+        };
+    }
+    exports.nameShape = _propTypes2["default"].oneOfType([ _propTypes2["default"].string, _propTypes2["default"].shape({
+        enter: _propTypes2["default"].string,
+        leave: _propTypes2["default"].string,
+        active: _propTypes2["default"].string
+    }), _propTypes2["default"].shape({
+        enter: _propTypes2["default"].string,
+        enterActive: _propTypes2["default"].string,
+        leave: _propTypes2["default"].string,
+        leaveActive: _propTypes2["default"].string,
+        appear: _propTypes2["default"].string,
+        appearActive: _propTypes2["default"].string
+    }) ]);
+}, function(module, exports, __webpack_require__) {
+    "use strict";
+    module.exports = __webpack_require__(13);
+}, function(module, exports, __webpack_require__) {
+    "use strict";
+    var k = __webpack_require__(4), n = "function" == typeof Symbol && Symbol["for"], p = n ? Symbol["for"]("react.element") : 60103, q = n ? Symbol["for"]("react.portal") : 60106, r = n ? Symbol["for"]("react.fragment") : 60107, t = n ? Symbol["for"]("react.strict_mode") : 60108, u = n ? Symbol["for"]("react.profiler") : 60114, v = n ? Symbol["for"]("react.provider") : 60109, w = n ? Symbol["for"]("react.context") : 60110, x = n ? Symbol["for"]("react.concurrent_mode") : 60111, y = n ? Symbol["for"]("react.forward_ref") : 60112, z = n ? Symbol["for"]("react.suspense") : 60113, aa = n ? Symbol["for"]("react.memo") : 60115, ba = n ? Symbol["for"]("react.lazy") : 60116, A = "function" == typeof Symbol && Symbol.iterator;
     function B(a) {
         for (var b = arguments.length - 1, d = "https://reactjs.org/docs/error-decoder.html?invariant=" + a, c = 0; c < b; c++) d += "&args[]=" + encodeURIComponent(arguments[c + 1]);
         !function(a, b, d, c, e, g, h, f) {
@@ -418,7 +463,7 @@
     module.exports = Z["default"] || Z;
 }, function(module, exports, __webpack_require__) {
     "use strict";
-    var aa = __webpack_require__(0), n = __webpack_require__(2), r = __webpack_require__(6);
+    var aa = __webpack_require__(0), n = __webpack_require__(4), r = __webpack_require__(10);
     function x(a) {
         for (var b = arguments.length - 1, c = "https://reactjs.org/docs/error-decoder.html?invariant=" + a, d = 0; d < b; d++) c += "&args[]=" + encodeURIComponent(arguments[d + 1]);
         !function(a, b, c, d, e, f, g, h) {
@@ -4820,7 +4865,7 @@
     module.exports = Xi["default"] || Xi;
 }, function(module, exports, __webpack_require__) {
     "use strict";
-    module.exports = __webpack_require__(7);
+    module.exports = __webpack_require__(11);
 }, function(module, exports, __webpack_require__) {
     "use strict";
     (function(global) {
@@ -5084,7 +5129,7 @@
         }, exports.unstable_pauseExecution = function() {}, exports.unstable_getFirstCallbackNode = function() {
             return d;
         };
-    }).call(this, __webpack_require__(8));
+    }).call(this, __webpack_require__(12));
 }, function(module, exports) {
     var g;
     g = function() {
@@ -5098,7 +5143,71 @@
     module.exports = g;
 }, function(module, exports, __webpack_require__) {
     "use strict";
-    var ReactPropTypesSecret = __webpack_require__(10);
+    exports.__esModule = !0;
+    var _extends = Object.assign || function(target) {
+        for (var i = 1; i < arguments.length; i++) {
+            var source = arguments[i];
+            for (var key in source) Object.prototype.hasOwnProperty.call(source, key) && (target[key] = source[key]);
+        }
+        return target;
+    }, _react2 = _interopRequireDefault(__webpack_require__(0)), _propTypes2 = _interopRequireDefault(__webpack_require__(1)), _TransitionGroup2 = _interopRequireDefault(__webpack_require__(16)), _CSSTransitionGroupChild2 = _interopRequireDefault(__webpack_require__(20)), _PropTypes = __webpack_require__(6);
+    function _interopRequireDefault(obj) {
+        return obj && obj.__esModule ? obj : {
+            "default": obj
+        };
+    }
+    function _possibleConstructorReturn(self, call) {
+        if (!self) throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+        return !call || "object" != typeof call && "function" != typeof call ? self : call;
+    }
+    _PropTypes.nameShape.isRequired, _propTypes2["default"].bool, _propTypes2["default"].bool, 
+    _propTypes2["default"].bool, (0, _PropTypes.transitionTimeout)("Appear"), (0, _PropTypes.transitionTimeout)("Enter"), 
+    (0, _PropTypes.transitionTimeout)("Leave");
+    var CSSTransitionGroup = function(_React$Component) {
+        function CSSTransitionGroup() {
+            var _temp, _this;
+            !function(instance, Constructor) {
+                if (!(instance instanceof Constructor)) throw new TypeError("Cannot call a class as a function");
+            }(this, CSSTransitionGroup);
+            for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) args[_key] = arguments[_key];
+            return _temp = _this = _possibleConstructorReturn(this, _React$Component.call.apply(_React$Component, [ this ].concat(args))), 
+            _this._wrapChild = function(child) {
+                return _react2["default"].createElement(_CSSTransitionGroupChild2["default"], {
+                    name: _this.props.transitionName,
+                    appear: _this.props.transitionAppear,
+                    enter: _this.props.transitionEnter,
+                    leave: _this.props.transitionLeave,
+                    appearTimeout: _this.props.transitionAppearTimeout,
+                    enterTimeout: _this.props.transitionEnterTimeout,
+                    leaveTimeout: _this.props.transitionLeaveTimeout
+                }, child);
+            }, _possibleConstructorReturn(_this, _temp);
+        }
+        return function(subClass, superClass) {
+            if ("function" != typeof superClass && null !== superClass) throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);
+            subClass.prototype = Object.create(superClass && superClass.prototype, {
+                constructor: {
+                    value: subClass,
+                    enumerable: !1,
+                    writable: !0,
+                    configurable: !0
+                }
+            }), superClass && (Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass);
+        }(CSSTransitionGroup, _React$Component), CSSTransitionGroup.prototype.render = function() {
+            return _react2["default"].createElement(_TransitionGroup2["default"], _extends({}, this.props, {
+                childFactory: this._wrapChild
+            }));
+        }, CSSTransitionGroup;
+    }(_react2["default"].Component);
+    CSSTransitionGroup.displayName = "CSSTransitionGroup", CSSTransitionGroup.propTypes = {}, 
+    CSSTransitionGroup.defaultProps = {
+        transitionAppear: !1,
+        transitionEnter: !0,
+        transitionLeave: !0
+    }, exports["default"] = CSSTransitionGroup, module.exports = exports["default"];
+}, function(module, exports, __webpack_require__) {
+    "use strict";
+    var ReactPropTypesSecret = __webpack_require__(15);
     function emptyFunction() {}
     function emptyFunctionWithReset() {}
     emptyFunctionWithReset.resetWarningCache = emptyFunction, module.exports = function() {
@@ -5140,18 +5249,380 @@
     "use strict";
     module.exports = "SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED";
 }, function(module, exports, __webpack_require__) {
-    var content = __webpack_require__(12);
+    "use strict";
+    exports.__esModule = !0;
+    var _extends = Object.assign || function(target) {
+        for (var i = 1; i < arguments.length; i++) {
+            var source = arguments[i];
+            for (var key in source) Object.prototype.hasOwnProperty.call(source, key) && (target[key] = source[key]);
+        }
+        return target;
+    }, _chainFunction2 = _interopRequireDefault(__webpack_require__(17)), _react2 = _interopRequireDefault(__webpack_require__(0)), _propTypes2 = _interopRequireDefault(__webpack_require__(1)), _ChildMapping = (_interopRequireDefault(__webpack_require__(18)), 
+    __webpack_require__(19));
+    function _interopRequireDefault(obj) {
+        return obj && obj.__esModule ? obj : {
+            "default": obj
+        };
+    }
+    _propTypes2["default"].any, _propTypes2["default"].func, _propTypes2["default"].node;
+    var TransitionGroup = function(_React$Component) {
+        function TransitionGroup(props, context) {
+            !function(instance, Constructor) {
+                if (!(instance instanceof Constructor)) throw new TypeError("Cannot call a class as a function");
+            }(this, TransitionGroup);
+            var _this = function(self, call) {
+                if (!self) throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+                return !call || "object" != typeof call && "function" != typeof call ? self : call;
+            }(this, _React$Component.call(this, props, context));
+            return _this.performAppear = function(key, component) {
+                _this.currentlyTransitioningKeys[key] = !0, component.componentWillAppear ? component.componentWillAppear(_this._handleDoneAppearing.bind(_this, key, component)) : _this._handleDoneAppearing(key, component);
+            }, _this._handleDoneAppearing = function(key, component) {
+                component.componentDidAppear && component.componentDidAppear(), delete _this.currentlyTransitioningKeys[key];
+                var currentChildMapping = (0, _ChildMapping.getChildMapping)(_this.props.children);
+                currentChildMapping && currentChildMapping.hasOwnProperty(key) || _this.performLeave(key, component);
+            }, _this.performEnter = function(key, component) {
+                _this.currentlyTransitioningKeys[key] = !0, component.componentWillEnter ? component.componentWillEnter(_this._handleDoneEntering.bind(_this, key, component)) : _this._handleDoneEntering(key, component);
+            }, _this._handleDoneEntering = function(key, component) {
+                component.componentDidEnter && component.componentDidEnter(), delete _this.currentlyTransitioningKeys[key];
+                var currentChildMapping = (0, _ChildMapping.getChildMapping)(_this.props.children);
+                currentChildMapping && currentChildMapping.hasOwnProperty(key) || _this.performLeave(key, component);
+            }, _this.performLeave = function(key, component) {
+                _this.currentlyTransitioningKeys[key] = !0, component.componentWillLeave ? component.componentWillLeave(_this._handleDoneLeaving.bind(_this, key, component)) : _this._handleDoneLeaving(key, component);
+            }, _this._handleDoneLeaving = function(key, component) {
+                component.componentDidLeave && component.componentDidLeave(), delete _this.currentlyTransitioningKeys[key];
+                var currentChildMapping = (0, _ChildMapping.getChildMapping)(_this.props.children);
+                currentChildMapping && currentChildMapping.hasOwnProperty(key) ? _this.keysToEnter.push(key) : _this.setState(function(state) {
+                    var newChildren = _extends({}, state.children);
+                    return delete newChildren[key], {
+                        children: newChildren
+                    };
+                });
+            }, _this.childRefs = Object.create(null), _this.state = {
+                children: (0, _ChildMapping.getChildMapping)(props.children)
+            }, _this;
+        }
+        return function(subClass, superClass) {
+            if ("function" != typeof superClass && null !== superClass) throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);
+            subClass.prototype = Object.create(superClass && superClass.prototype, {
+                constructor: {
+                    value: subClass,
+                    enumerable: !1,
+                    writable: !0,
+                    configurable: !0
+                }
+            }), superClass && (Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass);
+        }(TransitionGroup, _React$Component), TransitionGroup.prototype.componentWillMount = function() {
+            this.currentlyTransitioningKeys = {}, this.keysToEnter = [], this.keysToLeave = [];
+        }, TransitionGroup.prototype.componentDidMount = function() {
+            var initialChildMapping = this.state.children;
+            for (var key in initialChildMapping) initialChildMapping[key] && this.performAppear(key, this.childRefs[key]);
+        }, TransitionGroup.prototype.componentWillReceiveProps = function(nextProps) {
+            var nextChildMapping = (0, _ChildMapping.getChildMapping)(nextProps.children), prevChildMapping = this.state.children;
+            for (var key in this.setState({
+                children: (0, _ChildMapping.mergeChildMappings)(prevChildMapping, nextChildMapping)
+            }), nextChildMapping) {
+                var hasPrev = prevChildMapping && prevChildMapping.hasOwnProperty(key);
+                !nextChildMapping[key] || hasPrev || this.currentlyTransitioningKeys[key] || this.keysToEnter.push(key);
+            }
+            for (var _key in prevChildMapping) {
+                var hasNext = nextChildMapping && nextChildMapping.hasOwnProperty(_key);
+                !prevChildMapping[_key] || hasNext || this.currentlyTransitioningKeys[_key] || this.keysToLeave.push(_key);
+            }
+        }, TransitionGroup.prototype.componentDidUpdate = function() {
+            var _this2 = this, keysToEnter = this.keysToEnter;
+            this.keysToEnter = [], keysToEnter.forEach(function(key) {
+                return _this2.performEnter(key, _this2.childRefs[key]);
+            });
+            var keysToLeave = this.keysToLeave;
+            this.keysToLeave = [], keysToLeave.forEach(function(key) {
+                return _this2.performLeave(key, _this2.childRefs[key]);
+            });
+        }, TransitionGroup.prototype.render = function() {
+            var _this3 = this, childrenToRender = [], _loop = function(key) {
+                var child = _this3.state.children[key];
+                if (child) {
+                    var isCallbackRef = "string" != typeof child.ref, factoryChild = _this3.props.childFactory(child), ref = function(r) {
+                        _this3.childRefs[key] = r;
+                    };
+                    factoryChild === child && isCallbackRef && (ref = (0, _chainFunction2["default"])(child.ref, ref)), 
+                    childrenToRender.push(_react2["default"].cloneElement(factoryChild, {
+                        key: key,
+                        ref: ref
+                    }));
+                }
+            };
+            for (var key in this.state.children) _loop(key);
+            var props = _extends({}, this.props);
+            return delete props.transitionLeave, delete props.transitionName, delete props.transitionAppear, 
+            delete props.transitionEnter, delete props.childFactory, delete props.transitionLeaveTimeout, 
+            delete props.transitionEnterTimeout, delete props.transitionAppearTimeout, delete props.component, 
+            _react2["default"].createElement(this.props.component, props, childrenToRender);
+        }, TransitionGroup;
+    }(_react2["default"].Component);
+    TransitionGroup.displayName = "TransitionGroup", TransitionGroup.propTypes = {}, 
+    TransitionGroup.defaultProps = {
+        component: "span",
+        childFactory: function(child) {
+            return child;
+        }
+    }, exports["default"] = TransitionGroup, module.exports = exports["default"];
+}, function(module, exports) {
+    module.exports = function() {
+        for (var len = arguments.length, args = [], i = 0; i < len; i++) args[i] = arguments[i];
+        return 0 === (args = args.filter(function(fn) {
+            return null != fn;
+        })).length ? undefined : 1 === args.length ? args[0] : args.reduce(function(current, next) {
+            return function() {
+                current.apply(this, arguments), next.apply(this, arguments);
+            };
+        });
+    };
+}, function(module, exports, __webpack_require__) {
+    "use strict";
+    module.exports = function() {};
+}, function(module, exports, __webpack_require__) {
+    "use strict";
+    exports.__esModule = !0, exports.getChildMapping = function(children) {
+        if (!children) return children;
+        var result = {};
+        return _react.Children.map(children, function(child) {
+            return child;
+        }).forEach(function(child) {
+            result[child.key] = child;
+        }), result;
+    }, exports.mergeChildMappings = function(prev, next) {
+        function getValueForKey(key) {
+            return next.hasOwnProperty(key) ? next[key] : prev[key];
+        }
+        prev = prev || {}, next = next || {};
+        var nextKeysPending = {}, pendingKeys = [];
+        for (var prevKey in prev) next.hasOwnProperty(prevKey) ? pendingKeys.length && (nextKeysPending[prevKey] = pendingKeys, 
+        pendingKeys = []) : pendingKeys.push(prevKey);
+        var i = void 0, childMapping = {};
+        for (var nextKey in next) {
+            if (nextKeysPending.hasOwnProperty(nextKey)) for (i = 0; i < nextKeysPending[nextKey].length; i++) {
+                var pendingNextKey = nextKeysPending[nextKey][i];
+                childMapping[nextKeysPending[nextKey][i]] = getValueForKey(pendingNextKey);
+            }
+            childMapping[nextKey] = getValueForKey(nextKey);
+        }
+        for (i = 0; i < pendingKeys.length; i++) childMapping[pendingKeys[i]] = getValueForKey(pendingKeys[i]);
+        return childMapping;
+    };
+    var _react = __webpack_require__(0);
+}, function(module, exports, __webpack_require__) {
+    "use strict";
+    exports.__esModule = !0;
+    var _extends = Object.assign || function(target) {
+        for (var i = 1; i < arguments.length; i++) {
+            var source = arguments[i];
+            for (var key in source) Object.prototype.hasOwnProperty.call(source, key) && (target[key] = source[key]);
+        }
+        return target;
+    }, _addClass2 = _interopRequireDefault(__webpack_require__(21)), _removeClass2 = _interopRequireDefault(__webpack_require__(23)), _requestAnimationFrame2 = _interopRequireDefault(__webpack_require__(24)), _properties = __webpack_require__(25), _react2 = _interopRequireDefault(__webpack_require__(0)), _propTypes2 = _interopRequireDefault(__webpack_require__(1)), _reactDom = __webpack_require__(3), _PropTypes = __webpack_require__(6);
+    function _interopRequireDefault(obj) {
+        return obj && obj.__esModule ? obj : {
+            "default": obj
+        };
+    }
+    function _possibleConstructorReturn(self, call) {
+        if (!self) throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+        return !call || "object" != typeof call && "function" != typeof call ? self : call;
+    }
+    var events = [];
+    _properties.transitionEnd && events.push(_properties.transitionEnd), _properties.animationEnd && events.push(_properties.animationEnd);
+    _propTypes2["default"].node, _PropTypes.nameShape.isRequired, _propTypes2["default"].bool, 
+    _propTypes2["default"].bool, _propTypes2["default"].bool, _propTypes2["default"].number, 
+    _propTypes2["default"].number, _propTypes2["default"].number;
+    var CSSTransitionGroupChild = function(_React$Component) {
+        function CSSTransitionGroupChild() {
+            var _temp, _this;
+            !function(instance, Constructor) {
+                if (!(instance instanceof Constructor)) throw new TypeError("Cannot call a class as a function");
+            }(this, CSSTransitionGroupChild);
+            for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) args[_key] = arguments[_key];
+            return _temp = _this = _possibleConstructorReturn(this, _React$Component.call.apply(_React$Component, [ this ].concat(args))), 
+            _this.componentWillAppear = function(done) {
+                _this.props.appear ? _this.transition("appear", done, _this.props.appearTimeout) : done();
+            }, _this.componentWillEnter = function(done) {
+                _this.props.enter ? _this.transition("enter", done, _this.props.enterTimeout) : done();
+            }, _this.componentWillLeave = function(done) {
+                _this.props.leave ? _this.transition("leave", done, _this.props.leaveTimeout) : done();
+            }, _possibleConstructorReturn(_this, _temp);
+        }
+        return function(subClass, superClass) {
+            if ("function" != typeof superClass && null !== superClass) throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);
+            subClass.prototype = Object.create(superClass && superClass.prototype, {
+                constructor: {
+                    value: subClass,
+                    enumerable: !1,
+                    writable: !0,
+                    configurable: !0
+                }
+            }), superClass && (Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass);
+        }(CSSTransitionGroupChild, _React$Component), CSSTransitionGroupChild.prototype.componentWillMount = function() {
+            this.classNameAndNodeQueue = [], this.transitionTimeouts = [];
+        }, CSSTransitionGroupChild.prototype.componentWillUnmount = function() {
+            this.unmounted = !0, this.timeout && clearTimeout(this.timeout), this.transitionTimeouts.forEach(function(timeout) {
+                clearTimeout(timeout);
+            }), this.classNameAndNodeQueue.length = 0;
+        }, CSSTransitionGroupChild.prototype.transition = function(animationType, finishCallback, timeout) {
+            var node = (0, _reactDom.findDOMNode)(this);
+            if (node) {
+                var className = this.props.name[animationType] || this.props.name + "-" + animationType, activeClassName = this.props.name[animationType + "Active"] || className + "-active", timer = null, removeListeners = void 0;
+                (0, _addClass2["default"])(node, className), this.queueClassAndNode(activeClassName, node);
+                var finish = function(e) {
+                    e && e.target !== node || (clearTimeout(timer), removeListeners && removeListeners(), 
+                    (0, _removeClass2["default"])(node, className), (0, _removeClass2["default"])(node, activeClassName), 
+                    removeListeners && removeListeners(), finishCallback && finishCallback());
+                };
+                timeout ? (timer = setTimeout(finish, timeout), this.transitionTimeouts.push(timer)) : _properties.transitionEnd && (removeListeners = function(node, listener) {
+                    return events.length ? events.forEach(function(e) {
+                        return node.addEventListener(e, listener, !1);
+                    }) : setTimeout(listener, 0), function() {
+                        events.length && events.forEach(function(e) {
+                            return node.removeEventListener(e, listener, !1);
+                        });
+                    };
+                }(node, finish));
+            } else finishCallback && finishCallback();
+        }, CSSTransitionGroupChild.prototype.queueClassAndNode = function(className, node) {
+            var _this2 = this;
+            this.classNameAndNodeQueue.push({
+                className: className,
+                node: node
+            }), this.rafHandle || (this.rafHandle = (0, _requestAnimationFrame2["default"])(function() {
+                return _this2.flushClassNameAndNodeQueue();
+            }));
+        }, CSSTransitionGroupChild.prototype.flushClassNameAndNodeQueue = function() {
+            this.unmounted || this.classNameAndNodeQueue.forEach(function(obj) {
+                obj.node.scrollTop, (0, _addClass2["default"])(obj.node, obj.className);
+            }), this.classNameAndNodeQueue.length = 0, this.rafHandle = null;
+        }, CSSTransitionGroupChild.prototype.render = function() {
+            var props = _extends({}, this.props);
+            return delete props.name, delete props.appear, delete props.enter, delete props.leave, 
+            delete props.appearTimeout, delete props.enterTimeout, delete props.leaveTimeout, 
+            delete props.children, _react2["default"].cloneElement(_react2["default"].Children.only(this.props.children), props);
+        }, CSSTransitionGroupChild;
+    }(_react2["default"].Component);
+    CSSTransitionGroupChild.displayName = "CSSTransitionGroupChild", CSSTransitionGroupChild.propTypes = {}, 
+    exports["default"] = CSSTransitionGroupChild, module.exports = exports["default"];
+}, function(module, exports, __webpack_require__) {
+    "use strict";
+    var _interopRequireDefault = __webpack_require__(2);
+    exports.__esModule = !0, exports["default"] = function(element, className) {
+        element.classList ? element.classList.add(className) : (0, _hasClass["default"])(element, className) || ("string" == typeof element.className ? element.className = element.className + " " + className : element.setAttribute("class", (element.className && element.className.baseVal || "") + " " + className));
+    };
+    var _hasClass = _interopRequireDefault(__webpack_require__(22));
+    module.exports = exports["default"];
+}, function(module, exports, __webpack_require__) {
+    "use strict";
+    exports.__esModule = !0, exports["default"] = function(element, className) {
+        return element.classList ? !!className && element.classList.contains(className) : -1 !== (" " + (element.className.baseVal || element.className) + " ").indexOf(" " + className + " ");
+    }, module.exports = exports["default"];
+}, function(module, exports, __webpack_require__) {
+    "use strict";
+    function replaceClassName(origClass, classToRemove) {
+        return origClass.replace(new RegExp("(^|\\s)" + classToRemove + "(?:\\s|$)", "g"), "$1").replace(/\s+/g, " ").replace(/^\s*|\s*$/g, "");
+    }
+    module.exports = function(element, className) {
+        element.classList ? element.classList.remove(className) : "string" == typeof element.className ? element.className = replaceClassName(element.className, className) : element.setAttribute("class", replaceClassName(element.className && element.className.baseVal || "", className));
+    };
+}, function(module, exports, __webpack_require__) {
+    "use strict";
+    var _interopRequireDefault = __webpack_require__(2);
+    exports.__esModule = !0, exports["default"] = void 0;
+    var compatRaf, cancel = "clearTimeout", raf = function(fn) {
+        var curr = new Date().getTime(), ms = Math.max(0, 16 - (curr - prev)), req = setTimeout(fn, ms);
+        return prev = curr, req;
+    }, getKey = function(vendor, k) {
+        return vendor + (vendor ? k[0].toUpperCase() + k.substr(1) : k) + "AnimationFrame";
+    };
+    _interopRequireDefault(__webpack_require__(5))["default"] && [ "", "webkit", "moz", "o", "ms" ].some(function(vendor) {
+        var rafKey = getKey(vendor, "request");
+        if (rafKey in window) return cancel = getKey(vendor, "cancel"), raf = function(cb) {
+            return window[rafKey](cb);
+        };
+    });
+    var prev = new Date().getTime();
+    (compatRaf = function(cb) {
+        return raf(cb);
+    }).cancel = function(id) {
+        window[cancel] && "function" == typeof window[cancel] && window[cancel](id);
+    };
+    var _default = compatRaf;
+    exports["default"] = _default, module.exports = exports["default"];
+}, function(module, exports, __webpack_require__) {
+    "use strict";
+    var _interopRequireDefault = __webpack_require__(2);
+    exports.__esModule = !0, exports["default"] = exports.animationEnd = exports.animationDelay = exports.animationTiming = exports.animationDuration = exports.animationName = exports.transitionEnd = exports.transitionDuration = exports.transitionDelay = exports.transitionTiming = exports.transitionProperty = exports.transform = void 0;
+    var prefix, transitionEnd, animationEnd, transitionProperty, transitionDuration, transitionTiming, transitionDelay, animationName, animationDuration, animationTiming, animationDelay, _inDOM = _interopRequireDefault(__webpack_require__(5)), transform = "transform";
+    if (exports.transform = transform, exports.animationEnd = animationEnd, exports.transitionEnd = transitionEnd, 
+    exports.transitionDelay = transitionDelay, exports.transitionTiming = transitionTiming, 
+    exports.transitionDuration = transitionDuration, exports.transitionProperty = transitionProperty, 
+    exports.animationDelay = animationDelay, exports.animationTiming = animationTiming, 
+    exports.animationDuration = animationDuration, exports.animationName = animationName, 
+    _inDOM["default"]) {
+        var _getTransitionPropert = function() {
+            for (var transitionEnd, animationEnd, style = document.createElement("div").style, vendorMap = {
+                O: function(e) {
+                    return "o" + e.toLowerCase();
+                },
+                Moz: function(e) {
+                    return e.toLowerCase();
+                },
+                Webkit: function(e) {
+                    return "webkit" + e;
+                },
+                ms: function(e) {
+                    return "MS" + e;
+                }
+            }, vendors = Object.keys(vendorMap), prefix = "", i = 0; i < vendors.length; i++) {
+                var vendor = vendors[i];
+                if (vendor + "TransitionProperty" in style) {
+                    prefix = "-" + vendor.toLowerCase(), transitionEnd = vendorMap[vendor]("TransitionEnd"), 
+                    animationEnd = vendorMap[vendor]("AnimationEnd");
+                    break;
+                }
+            }
+            !transitionEnd && "transitionProperty" in style && (transitionEnd = "transitionend");
+            !animationEnd && "animationName" in style && (animationEnd = "animationend");
+            return style = null, {
+                animationEnd: animationEnd,
+                transitionEnd: transitionEnd,
+                prefix: prefix
+            };
+        }();
+        prefix = _getTransitionPropert.prefix, exports.transitionEnd = transitionEnd = _getTransitionPropert.transitionEnd, 
+        exports.animationEnd = animationEnd = _getTransitionPropert.animationEnd, exports.transform = transform = prefix + "-" + transform, 
+        exports.transitionProperty = transitionProperty = prefix + "-transition-property", 
+        exports.transitionDuration = transitionDuration = prefix + "-transition-duration", 
+        exports.transitionDelay = transitionDelay = prefix + "-transition-delay", exports.transitionTiming = transitionTiming = prefix + "-transition-timing-function", 
+        exports.animationName = animationName = prefix + "-animation-name", exports.animationDuration = animationDuration = prefix + "-animation-duration", 
+        exports.animationTiming = animationTiming = prefix + "-animation-delay", exports.animationDelay = animationDelay = prefix + "-animation-timing-function";
+    }
+    var _default = {
+        transform: transform,
+        end: transitionEnd,
+        property: transitionProperty,
+        timing: transitionTiming,
+        delay: transitionDelay,
+        duration: transitionDuration
+    };
+    exports["default"] = _default;
+}, function(module, exports, __webpack_require__) {
+    var content = __webpack_require__(27);
     "string" == typeof content && (content = [ [ module.i, content, "" ] ]);
     var options = {
         hmr: !0,
         transform: void 0
     };
     options.insertInto = undefined;
-    __webpack_require__(14)(content, options);
+    __webpack_require__(29)(content, options);
     content.locals && (module.exports = content.locals);
 }, function(module, exports, __webpack_require__) {
-    (exports = module.exports = __webpack_require__(13)(!1)).push([ module.i, "@import url(https://fonts.googleapis.com/css?family=Roboto:400,500,700,900&display=swap);", "" ]), 
-    exports.push([ module.i, "/* my style sheet */\n:root {\n    --app-bkg-color-1: #FFF3C9;\n    --app-bkg-color-2: #FFD445;\n    --app-color-primary: #FB8952;\n    --app-color-white: #FFFFFF;\n\n    --border-radius: 10px;\n\n    --font-size-lg: 24px;\n    --font-size-md: 18px;\n    --font-size-sm: 14px;\n\n    --font-size-input: 38px;\n    --font-line-height: 50px;\n\n    --font-weight-reg: 400;\n    --font-weight-med: 500;\n    --font-weight-bld: 600;\n    --font-weight-blk: 700;\n\n    --box-shadow: 0px 8px 8px rgba(0,0,0,.3);\n}\n\n/* loading google fonts */\n\nbutton {\n    padding: 0;\n    border: none;\n    background: none;\n}\n\n.app-body {\n    font-family: 'Roboto', sans-serif;\n    font-size: var(--font-size-md);\n    font-weight: var(--font-weight-med);\n    line-height: var(--font-line-height);\n    margin: 0;\n    background-image: linear-gradient(to bottom right, var(--app-bkg-color-1), var(--app-bkg-color-2));\n}\n\n.app-content {\n    display: flex;\n    flex-direction: column;\n    height: 100vh;\n}\n\n.app-branding {\n    flex: 1 0 33.3%;\n}\n    .app-branding__logo {\n        height: 100%;\n        display: flex;\n        justify-content: center;\n        align-items: center;\n    }\n\n.app-controllers {\n    flex: 1 0 66.7%;\n}\n    .app-controllers__restart-btn {\n        position: absolute;\n        top: 20px;\n        left: 20px;\n    }\n\n    .app-controllers__timestamp {\n        position: absolute;\n        top: 20px;\n        right: 20px;\n    }\n\n    .app-controllers__views {\n        height: 100%;\n    }\n\n.timestamp {\n    font-size: 1em;\n}\n\n.view {\n    height: 100%;\n}\n\n    .view__content {\n        height: 100%;\n        display: flex;\n        flex-direction: column;\n    }\n\n    .view__list {\n        height: 100%;\n        display: flex;\n        flex-direction: row;\n        flex-wrap: wrap;\n    }\n\n    .view__top {\n        flex: 1 0 50%;\n        display: flex;\n        justify-content: center;\n        align-items: center;\n    }\n\n    .view__bottom {\n        flex: 1 0 50%;\n    }\n\n.module {\n    text-align: center;\n}\n    \n    .module__title {\n        font-size: var(--font-size-lg);\n        font-weight: var(--font-weight-bld);\n    }\n\n    .module__text-input {\n        border: solid 4px var(--app-color-primary);\n        background: var(--app-color-white);\n        border-radius: var(--border-radius);\n        position: relative;\n    }\n\n    .module__list {\n        display: flex;\n        flex-direction: row;\n        flex-wrap: wrap;\n        align-items: center;\n        justify-content: space-evenly;\n        height: 100%;\n    }\n\n        .module__list--confirm {\n            justify-content: center;\n        }\n\n        .module__list--confirm .module {\n            padding: 12px;\n            height: 60px;\n            margin: 18px;\n        }\n\n    .module__left,\n    .module__right {\n        flex: 1 0 50%;\n        margin: 0!important;\n    }\n\n    .module--card {\n        border: solid 4px var(--app-color-primary);\n        border-radius: var(--border-radius);\n        overflow: hidden;\n        box-shadow: var(--box-shadow);\n        background: #FFFFFF;\n    }\n\n    .module--split {\n        display: flex;\n        flex-direction: row;\n        box-shadow: none!important;\n    }\n\n.user-search {\n    font-size: var(--font-size-input);\n    font-weight: var(--font-weight-blk);\n    width: 75vw;\n    text-align: center;\n    line-height: 92px;\n    height: 92px;\n    border: none;\n    background: none;\n    outline: none;\n    text-transform: uppercase;\n}\n\n.clear-input {\n    position: absolute;\n    top: 20px;\n    right: 10px;\n}\n\n.user-image {\n    display: block;\n}\n\n.class {\n    line-height: 34px;\n    padding: 14px;\n    max-width: 160px;\n    margin-bottom: 18px;\n}\n\n    .class__title {\n        font-size: var(--font-size-lg);\n        font-weight: var(--font-weight-bld);\n        line-height: inherit;\n    }\n\n    .class__time {\n        font-size: var(--font-size-lg);\n        font-weight: var(--font-weight-med);\n        margin-bottom: 18px;\n        line-height: inherit;\n    }\n\n    .class__instructor {\n        font-size: var(--font-size-sm);\n        font-weight: var(--font-weight-bld);\n        line-height: 18px;\n    }\n\n    .class__details {\n        font-size: var(--font-size-sm);\n        font-weight: var(--font-weight-reg);\n        line-height: 18px;\n    }", "" ]);
+    (exports = module.exports = __webpack_require__(28)(!1)).push([ module.i, "@import url(https://fonts.googleapis.com/css?family=Roboto:400,500,700,900&display=swap);", "" ]), 
+    exports.push([ module.i, "/* my style sheet */\n:root {\n    --app-bkg-color-1: #BFDDE8;\n    --app-bkg-color-2: #AABBE6;\n    --app-color-primary: #082676;\n    --app-color-white: #FFFFFF;\n\n    --border-radius: 10px;\n\n    --font-size-lg: 24px;\n    --font-size-md: 18px;\n    --font-size-sm: 14px;\n\n    --font-size-input: 38px;\n    --font-line-height: 50px;\n\n    --font-weight-reg: 400;\n    --font-weight-med: 500;\n    --font-weight-bld: 600;\n    --font-weight-blk: 700;\n\n    --box-shadow: 0px 8px 8px rgba(0,0,0,.3);\n}\n\n/* loading google fonts */\n\nbutton {\n    padding: 0;\n    border: none;\n    background: none;\n}\n\n.app-body {\n    font-family: 'Roboto', sans-serif;\n    font-size: var(--font-size-md);\n    font-weight: var(--font-weight-med);\n    line-height: var(--font-line-height);\n    margin: 0;\n    background-image: linear-gradient(to bottom right, var(--app-bkg-color-1), var(--app-bkg-color-2));\n}\n\n.app-content {\n    display: flex;\n    flex-direction: column;\n    height: 100vh;\n}\n\n.app-branding {\n    flex: 1 0 30%;\n}\n    .app-branding__logo {\n        height: 100%;\n        display: flex;\n        justify-content: center;\n        align-items: center;\n    }\n\n.app-controllers {\n    flex: 1 0 70%;\n}\n    .app-controllers__restart-btn {\n        position: absolute;\n        top: 20px;\n        left: 20px;\n    }\n\n    .app-controllers__timestamp {\n        position: absolute;\n        top: 20px;\n        right: 20px;\n        line-height: 1rem;\n    }\n\n    .app-controllers__views {\n        height: 100%;\n    }\n\n    .app-controllers__loading {\n        position: absolute;\n        width: 100%;\n        bottom: 0;\n        text-align: center;\n    }\n\n.timestamp {\n    font-size: 1em;\n}\n\n.view {\n    height: 100%;\n}\n\n    .view__content {\n        height: 100%;\n        display: flex;\n        flex-direction: column;\n    }\n\n    .view__list {\n        height: 100%;\n        display: flex;\n        flex-direction: row;\n        flex-wrap: wrap;\n    }\n\n    .view__top {\n        flex: 1 0 50%;\n        display: flex;\n        justify-content: center;\n        align-items: center;\n    }\n\n    .view__bottom {\n        flex: 1 0 50%;\n    }\n\n.module {\n    text-align: center;\n}\n    \n    .module__title {\n        font-size: var(--font-size-lg);\n        font-weight: var(--font-weight-bld);\n    }\n\n    .module__text-input {\n        border: solid 4px var(--app-color-primary);\n        background: var(--app-color-white);\n        border-radius: var(--border-radius);\n        position: relative;\n    }\n\n    .module__list {\n        display: flex;\n        flex-direction: row;\n        flex-wrap: wrap;\n        align-items: center;\n        justify-content: space-evenly;\n        height: 100%;\n    }\n\n        .module__list--confirm {\n            justify-content: center;\n        }\n\n        .module__list--confirm .module {\n            padding: 12px;\n            height: 60px;\n            margin: 18px;\n        }\n\n    .module__left,\n    .module__right {\n        flex: 1 0 50%;\n        margin: 0!important;\n    }\n\n    .module--card {\n        border: solid 4px var(--app-color-primary);\n        border-radius: var(--border-radius);\n        overflow: hidden;\n        box-shadow: var(--box-shadow);\n        background: var(--app-color-white);\n    }\n\n    .module--split {\n        display: flex;\n        flex-direction: row;\n        box-shadow: none!important;\n    }\n\n.user-search {\n    font-size: var(--font-size-input);\n    font-weight: var(--font-weight-blk);\n    width: 75vw;\n    text-align: center;\n    line-height: 92px;\n    height: 92px;\n    border: none;\n    background: none;\n    outline: none;\n    text-transform: uppercase;\n}\n\n.clear-input {\n    position: absolute;\n    top: 20px;\n    right: 10px;\n}\n\n.user-image {\n    display: block;\n}\n\n.class {\n    line-height: 34px;\n    padding: 14px;\n    max-width: 160px;\n    margin-bottom: 18px;\n}\n\n    .class__title {\n        font-size: var(--font-size-lg);\n        font-weight: var(--font-weight-bld);\n        line-height: inherit;\n    }\n\n    .class__time {\n        font-size: var(--font-size-lg);\n        font-weight: var(--font-weight-med);\n        margin-bottom: 18px;\n        line-height: inherit;\n    }\n\n    .class__instructor {\n        font-size: var(--font-size-sm);\n        font-weight: var(--font-weight-bld);\n        line-height: 18px;\n    }\n\n    .class__details {\n        font-size: var(--font-size-sm);\n        font-weight: var(--font-weight-reg);\n        line-height: 18px;\n    }\n\n.slide-enter {\n    transform: translateY(100%);\n}\n      \n.slide-enter.slide-enter-active {\n    transform: translateY(0%);\n    transition: transform 500ms ease-in;\n}\n      \n.slide-leave {\n    transform: translateY(0%);\n}\n      \n.slide-leave.slide-leave-active {\n    transform: translateY(100%);\n    transition: transform 300ms ease-in;\n}", "" ]);
 }, function(module, exports) {
     module.exports = function(useSourceMap) {
         var list = [];
@@ -5206,7 +5677,7 @@
             }
             return memo[target];
         };
-    }(), singleton = null, singletonCounter = 0, stylesInsertedAtTop = [], fixUrls = __webpack_require__(15);
+    }(), singleton = null, singletonCounter = 0, stylesInsertedAtTop = [], fixUrls = __webpack_require__(30);
     function addStylesToDom(styles, options) {
         for (var i = 0; i < styles.length; i++) {
             var item = styles[i], domStyle = stylesInDom[item.id];
@@ -5363,8 +5834,26 @@
 }, function(module, __webpack_exports__, __webpack_require__) {
     "use strict";
     __webpack_require__.r(__webpack_exports__);
-    var react = __webpack_require__(0), react_default = __webpack_require__.n(react), react_dom = __webpack_require__(3), react_dom_default = __webpack_require__.n(react_dom);
-    const monthLong = [ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" ], displayTime = dateObj => {
+    var react = __webpack_require__(0), react_default = __webpack_require__.n(react), react_dom = __webpack_require__(3), react_dom_default = __webpack_require__.n(react_dom), react_addons_css_transition_group = __webpack_require__(7), react_addons_css_transition_group_default = __webpack_require__.n(react_addons_css_transition_group);
+    const monthLong = [ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" ], devMemberList = [ [ 2890, "John", "Pallas", "https://pixabay.com/get/55e1d54b4b5bb10ff3d89938b977692b083edbe35755724f7d2e7e/businessman-310819_640.png" ], [ 2891, "Jake", "Pallas", "https://pixabay.com/get/55e1d54b4b5bb10ff3d89938b977692b083edbe35755724f7d2e7e/businessman-310819_640.png" ], [ 2892, "Stacey", "Pallas", "https://pixabay.com/get/54e9d0404255b10ff3d89938b977692b083edbe35755724d77297a/teacher-295387_640.png" ] ], devCalenderClassList = [ {
+        id: 1,
+        start: "Sat Dec 30 12:00:00 GMT-05:00 1899",
+        end: "Sat Dec 30 15:00:00 GMT-05:00 1899",
+        title: "Boxing",
+        details: "<b>John Smith</b><br>This is the boxing class details."
+    }, {
+        id: 2,
+        start: "Sat Dec 30 15:00:00 GMT-05:00 1899",
+        end: "Sat Dec 30 19:00:00 GMT-05:00 1899",
+        title: "Yoga",
+        details: "<b>Jess Smith</b><br>This is the yoga class details."
+    }, {
+        id: 3,
+        start: "Sat Dec 30 19:00:00 GMT-05:00 1899",
+        end: "Sat Dec 30 21:00:00 GMT-05:00 1899",
+        title: "Jiu Jitsu",
+        details: "<b>Jax Smith</b><br>This is the jiu jitsu class details."
+    } ], displayTime = dateObj => {
         let minutes = `0${dateObj.getMinutes()}`.slice(-2);
         return `${dateObj.getHours()}:${minutes}`;
     };
@@ -5401,7 +5890,7 @@
                 event.preventDefault(), 0 !== text.length && props.searchHandler(event, text);
             }
         }, react_default.a.createElement("input", {
-            placeholder: "Start Here",
+            placeholder: "Tap here to start",
             type: "text",
             className: "user-search",
             onChange: event => setText(event.target.value),
@@ -5438,10 +5927,11 @@
         }, props.title), react_default.a.createElement("div", {
             className: "class__time"
         }, `${displayTime(new Date(props.time[0]))} - ${displayTime(new Date(props.time[1]))}`), react_default.a.createElement("div", {
-            className: "class__instructor"
-        }, props.instructor), react_default.a.createElement("div", {
-            className: "class__details"
-        }, props.details));
+            className: "class__details",
+            dangerouslySetInnerHTML: {
+                __html: props.details
+            }
+        }));
     }
     function ConfirmCard(props) {
         return react_default.a.createElement("div", {
@@ -5453,10 +5943,11 @@
         }, props.title), react_default.a.createElement("div", {
             className: "class__time"
         }, `${displayTime(new Date(props.time[0]))} - ${displayTime(new Date(props.time[1]))}`), react_default.a.createElement("div", {
-            className: "class__instructor"
-        }, props.instructor), react_default.a.createElement("div", {
-            className: "class__details"
-        }, props.details)), react_default.a.createElement("div", {
+            className: "class__details",
+            dangerouslySetInnerHTML: {
+                __html: props.details
+            }
+        })), react_default.a.createElement("div", {
             className: "module__right"
         }, react_default.a.createElement("img", {
             width: "150",
@@ -5474,32 +5965,32 @@
     }, ClassCard.propTypes = {
         title: prop_types_default.a.string,
         time: prop_types_default.a.array,
-        instructor: prop_types_default.a.string,
         details: prop_types_default.a.string,
         clickHandler: prop_types_default.a.func
     }, ConfirmCard.propTypes = {
         title: prop_types_default.a.string,
         time: prop_types_default.a.array,
-        instructor: prop_types_default.a.string,
         details: prop_types_default.a.string,
         src: prop_types_default.a.string
     };
     const serverMethods = {}, ignoredMethods = [ "withFailureHandler", "withLogger", "withSuccessHandler", "withUserObject" ];
-    for (const method in google.script.run) ignoredMethods.includes(method) || (serverMethods[method] = ((...args) => new Promise((resolve, reject) => {
+    if (google) for (const method in google.script.run) ignoredMethods.includes(method) || (serverMethods[method] = ((...args) => new Promise((resolve, reject) => {
         google.script.run.withSuccessHandler(resolve).withFailureHandler(reject)[method](...args);
     })));
     var server = serverMethods;
-    __webpack_require__(11);
+    __webpack_require__(26);
     react_dom_default.a.render(react_default.a.createElement(function() {
-        const [member, setMember] = Object(react["useState"])([]), [gymClass, setGymClass] = Object(react["useState"])([]), [memberList, setMemberList] = Object(react["useState"])([]), [gymClassList, setGymClassList] = Object(react["useState"])([]), [confirmed, setConfirmed] = Object(react["useState"])(!1), {getRowsInSheetByColumn: getRowsInSheetByColumn, getCurrentGymClasses: getCurrentGymClasses, setAttendance: setAttendance} = server, finalConfirmHandler = (event, value = !1) => {
+        const [member, setMember] = Object(react["useState"])([]), [gymClass, setGymClass] = Object(react["useState"])({}), [memberList, setMemberList] = Object(react["useState"])([]), [gymClassList, setGymClassList] = Object(react["useState"])([]), [confirmed, setConfirmed] = Object(react["useState"])(!1), [loading, setLoading] = Object(react["useState"])(!1), finalConfirmHandler = (event, value = !1) => {
+            let donezo = () => {
+                setLoading(!0), setConfirmed(!0), setTimeout(() => resetAppHandler(), 3e3);
+            };
             if (value) {
-                let newAttendanceRow = [ member[0], gymClass[0] ];
-                setAttendance(newAttendanceRow).then(() => {
-                    setConfirmed(!0), setTimeout(() => resetAppHandler(), 5e3);
-                })["catch"](alert);
+                let newAttendanceRow = [ member[0], gymClass.id ];
+                google ? server.setAttendance(newAttendanceRow).then(donezo)["catch"](alert) : donezo();
             } else setGymClass([]);
         }, resetAppHandler = () => {
-            setConfirmed(!1), setMember([]), setGymClass([]), setMemberList([]), setGymClassList([]);
+            setConfirmed(!1), setLoading(!1), setMember([]), setGymClass({}), setMemberList([]), 
+            setGymClassList([]);
         };
         return react_default.a.createElement("div", {
             className: "app-content"
@@ -5508,13 +5999,13 @@
         }, react_default.a.createElement("div", {
             className: "app-branding__logo"
         }, react_default.a.createElement("img", {
-            src: "https://via.placeholder.com/200x200",
+            src: "https://pixabay.com/get/57e0d14b4257ae14f1dc8460825668204022dfe05555754a76287cdd/gym-1048852_640.png",
             width: "200",
             height: "200",
             alt: "gym logo"
         }))), react_default.a.createElement("div", {
             className: "app-controllers"
-        }, (member.length > 0 || gymClass.length > 0) && react_default.a.createElement("button", {
+        }, (member.length > 0 || Object.values(gymClass).length > 0) && react_default.a.createElement("button", {
             className: "app-controllers__restart-btn",
             onClick: resetAppHandler
         }, react_default.a.createElement("svg", {
@@ -5525,9 +6016,16 @@
             xlinkHref: "#icon-cancel"
         }))), react_default.a.createElement("div", {
             className: "app-controllers__timestamp"
-        }, react_default.a.createElement(time_stamp_TimeStamp, null)), react_default.a.createElement("div", {
+        }, react_default.a.createElement(time_stamp_TimeStamp, null)), react_default.a.createElement(react_addons_css_transition_group_default.a, {
+            transitionName: "slide",
+            transitionEnterTimeout: 500,
+            transitionLeaveTimeout: 300
+        }, loading && react_default.a.createElement("div", {
+            key: 1,
+            className: "app-controllers__loading"
+        }, "This is the loading animation")), react_default.a.createElement("div", {
             className: "app-controllers__views"
-        }, !member.length > 0 && !gymClass.length > 0 && react_default.a.createElement("section", {
+        }, !member.length > 0 && !Object.values(gymClass).length > 0 && react_default.a.createElement("section", {
             className: "view view--user"
         }, react_default.a.createElement("div", {
             className: "view__content"
@@ -5537,9 +6035,11 @@
             className: "module"
         }, react_default.a.createElement("div", {
             className: "module__title"
-        }, "Please enter your last name or member number."), react_default.a.createElement(UserSearch, {
+        }, "Please enter your LAST NAME or MEMBER NUMBER."), react_default.a.createElement(UserSearch, {
             searchHandler: (event, value = "") => {
-                getRowsInSheetByColumn("Members", isNaN(value) ? 2 : 0, value).then(setMemberList)["catch"](alert);
+                setLoading(!0), google ? server.getRowsInSheetByColumn("Members", isNaN(value) ? 2 : 0, value).then(value => {
+                    setLoading(!1), console.log("members", value), setMemberList(value);
+                })["catch"](alert) : (setMemberList(devMemberList), setTimeout(() => setLoading(!1), 2e3));
             }
         }))), react_default.a.createElement("div", {
             className: "view__bottom"
@@ -5547,38 +6047,38 @@
             className: "module"
         }, react_default.a.createElement("div", {
             className: "module__title"
-        }, "Select your profile photo."), react_default.a.createElement("div", {
+        }, "Tap to select your photo."), react_default.a.createElement("div", {
             className: "module__list"
         }, memberList.map(member => react_default.a.createElement(UserCard, {
             clickHandler: e => ((event, value = []) => {
-                Array.isArray(value) && value.length > 0 && (setMember(value), getCurrentGymClasses().then(setGymClassList)["catch"](alert));
+                Array.isArray(value) && value.length > 0 && (setMember(value), setLoading(!0), google ? server.getCurrentCalenderEvents(2).then(value => {
+                    setLoading(!1), setGymClassList(value);
+                })["catch"](alert) : (setGymClassList(devCalenderClassList), setTimeout(() => setLoading(!1), 2e3)));
             })(0, member),
             key: member[0].toString(),
             src: member[3]
-        }))))))), member.length > 0 && !gymClass.length > 0 && react_default.a.createElement("section", {
+        }))))))), member.length > 0 && !Object.values(gymClass).length > 0 && react_default.a.createElement("section", {
             className: "view view--class"
         }, react_default.a.createElement("div", {
             className: "module__list"
         }, gymClassList.length > 0 && gymClassList.map(gymClass => react_default.a.createElement(ClassCard, {
-            clickHandler: e => ((event, value = []) => {
-                Array.isArray(value) && value.length > 0 && setGymClass(value);
+            clickHandler: e => ((event, value = {}) => {
+                setGymClass(value);
             })(0, gymClass),
-            key: gymClass[0].toString(),
-            title: gymClass[5],
-            time: [ gymClass[3], gymClass[4] ],
-            instructor: gymClass[6],
-            details: gymClass[7]
-        })))), member.length > 0 && gymClass.length > 0 && react_default.a.createElement("section", {
+            key: gymClass.id.toString(),
+            title: gymClass.title,
+            time: [ gymClass.start, gymClass.end ],
+            details: gymClass.details
+        })))), member.length > 0 && Object.values(gymClass).length > 0 && react_default.a.createElement("section", {
             className: "view view--confirm"
         }, react_default.a.createElement("div", {
             className: "view__content"
         }, react_default.a.createElement("div", {
             className: "view__top"
         }, react_default.a.createElement(ConfirmCard, {
-            title: gymClass[5],
-            time: [ gymClass[3], gymClass[4] ],
-            instructor: gymClass[6],
-            details: gymClass[7],
+            title: gymClass.title,
+            time: [ gymClass.start, gymClass.end ],
+            details: gymClass.details,
             src: member[3]
         })), react_default.a.createElement("div", {
             className: "view__bottom"

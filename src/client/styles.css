@@ -1,8 +1,8 @@
 /* my style sheet */
 :root {
-    --app-bkg-color-1: #FFF3C9;
-    --app-bkg-color-2: #FFD445;
-    --app-color-primary: #FB8952;
+    --app-bkg-color-1: #BFDDE8;
+    --app-bkg-color-2: #AABBE6;
+    --app-color-primary: #082676;
     --app-color-white: #FFFFFF;
 
     --border-radius: 10px;
@@ -47,7 +47,7 @@ button {
 }
 
 .app-branding {
-    flex: 1 0 33.3%;
+    flex: 1 0 30%;
 }
     .app-branding__logo {
         height: 100%;
@@ -57,7 +57,7 @@ button {
     }
 
 .app-controllers {
-    flex: 1 0 66.7%;
+    flex: 1 0 70%;
 }
     .app-controllers__restart-btn {
         position: absolute;
@@ -69,10 +69,18 @@ button {
         position: absolute;
         top: 20px;
         right: 20px;
+        line-height: 1rem;
     }
 
     .app-controllers__views {
         height: 100%;
+    }
+
+    .app-controllers__loading {
+        position: absolute;
+        width: 100%;
+        bottom: 0;
+        text-align: center;
     }
 
 .timestamp {
@@ -153,7 +161,7 @@ button {
         border-radius: var(--border-radius);
         overflow: hidden;
         box-shadow: var(--box-shadow);
-        background: #FFFFFF;
+        background: var(--app-color-white);
     }
 
     .module--split {
@@ -216,3 +224,21 @@ button {
         font-weight: var(--font-weight-reg);
         line-height: 18px;
     }
+
+.slide-enter {
+    transform: translateY(100%);
+}
+      
+.slide-enter.slide-enter-active {
+    transform: translateY(0%);
+    transition: transform 500ms ease-in;
+}
+      
+.slide-leave {
+    transform: translateY(0%);
+}
+      
+.slide-leave.slide-leave-active {
+    transform: translateY(100%);
+    transition: transform 300ms ease-in;
+}
