@@ -1,6 +1,9 @@
 # Gym Class Attendance Sign-in App
 I discovered Google App Scripts by accident in 2017 while working in Google Sheets. Upon further investigation, I felt I had stumbled upon a golden resource. I built this project to try out Google App Scripts capabilities and also create something with React. Enjoy!
 
+Demo - https://script.google.com/macros/s/AKfycbxie4-nC-H8W_sW1Qh55HAvXeMD1195-NUSilcoB14VwrQPWGeQ/exec
+Google Sheet - https://docs.google.com/spreadsheets/d/137AledrNYTQv7ZOODO-XK9O6JTT0k2kYMAPfYhzuXio/edit?usp=sharing
+
 ### Project Boilerplate
 This project boilerplate was cloned from - https://github.com/enuchi/React-Google-Apps-Script.git
 
