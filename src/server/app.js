@@ -26,6 +26,8 @@ const getRowsInSheet = (sheetName, data, ignoreCase = true) => {
   })));
 };
 
+// this method was used for schedules in a sheet
+// but has been replaced with the Calendar API
 const getCurrentGymClasses = () => {
   let rows = getSheet('Schedule');
   let now = new Date();
@@ -98,7 +100,7 @@ const getSheet = (sheetName, getValues = true) => {
 export {
   getCurrentCalenderEvents,
   getRowsInSheetByColumn,
-  getCurrentGymClasses,
+  // getCurrentGymClasses,
   getRowsInSheet,
   setAttendance,
 };

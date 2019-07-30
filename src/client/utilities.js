@@ -2,16 +2,16 @@ const monthLong = ['January', 'February', 'March', 'April', 'May', 'June', 'July
 const monthShort = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
 const devMemberList = [
-  [2890, 'John', 'Pallas', 'https://pixabay.com/get/55e1d54b4b5bb10ff3d89938b977692b083edbe35755724f7d2e7e/businessman-310819_640.png'],
-  [2891, 'Jake', 'Pallas', 'https://pixabay.com/get/55e1d54b4b5bb10ff3d89938b977692b083edbe35755724f7d2e7e/businessman-310819_640.png'],
-  [2892, 'Stacey', 'Pallas', 'https://pixabay.com/get/54e9d0404255b10ff3d89938b977692b083edbe35755724d77297a/teacher-295387_640.png'],
+  [2890, 'John', 'Pallas', 'https://via.placeholder.com/300x300.png?text=Member+Photo+Here'],
+  [2891, 'Jake', 'Pallas', 'https://via.placeholder.com/300x300.png?text=Member+Photo+Here'],
+  [2892, 'Stacey', 'Pallas', 'https://via.placeholder.com/300x300.png?text=Member+Photo+Here'],
 ];
 
-const devGymClassList = [
-  [1, '', 0, 'Sat Dec 30 12:00:00 GMT-05:00 1899', 'Sat Dec 30 15:00:00 GMT-05:00 1899', 'Boxing', 'John Smith', 'This is the boxing class details.'],
-  [2, '', 0, 'Sat Dec 30 15:00:00 GMT-05:00 1899', 'Sat Dec 30 19:00:00 GMT-05:00 1899', 'Yoga', 'Jess Smith', 'This is the yoga class details.'],
-  [3, '', 0, 'Sat Dec 30 19:00:00 GMT-05:00 1899', 'Sat Dec 30 21:00:00 GMT-05:00 1899', 'Jiu Jitsu', 'Jax Smith', 'This is the jiu jitsu class details.'],
-];
+// const devGymClassList = [
+//   [1, '', 0, 'Sat Dec 30 12:00:00 GMT-05:00 1899', 'Sat Dec 30 15:00:00 GMT-05:00 1899', 'Boxing', 'John Smith', 'This is the boxing class details.'],
+//   [2, '', 0, 'Sat Dec 30 15:00:00 GMT-05:00 1899', 'Sat Dec 30 19:00:00 GMT-05:00 1899', 'Yoga', 'Jess Smith', 'This is the yoga class details.'],
+//   [3, '', 0, 'Sat Dec 30 19:00:00 GMT-05:00 1899', 'Sat Dec 30 21:00:00 GMT-05:00 1899', 'Jiu Jitsu', 'Jax Smith', 'This is the jiu jitsu class details.'],
+// ];
 
 const devCalenderClassList = [
   {id: 1, start:'Sat Dec 30 12:00:00 GMT-05:00 1899', end:'Sat Dec 30 15:00:00 GMT-05:00 1899', title:'Boxing', details:'<b>John Smith</b><br>This is the boxing class details.'},
@@ -29,6 +29,6 @@ export {
   monthShort,
   displayTime,
   devMemberList,
-  devGymClassList,
+  // devGymClassList,
   devCalenderClassList,
 };

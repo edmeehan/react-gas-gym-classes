@@ -98,6 +98,9 @@
     }(), module.exports = __webpack_require__(9);
 }, function(module, exports, __webpack_require__) {
     "use strict";
+    module.exports = __webpack_require__(13);
+}, function(module, exports, __webpack_require__) {
+    "use strict";
     var getOwnPropertySymbols = Object.getOwnPropertySymbols, hasOwnProperty = Object.prototype.hasOwnProperty, propIsEnumerable = Object.prototype.propertyIsEnumerable;
     module.exports = function() {
         try {
@@ -166,10 +169,7 @@
     }) ]);
 }, function(module, exports, __webpack_require__) {
     "use strict";
-    module.exports = __webpack_require__(13);
-}, function(module, exports, __webpack_require__) {
-    "use strict";
-    var k = __webpack_require__(4), n = "function" == typeof Symbol && Symbol["for"], p = n ? Symbol["for"]("react.element") : 60103, q = n ? Symbol["for"]("react.portal") : 60106, r = n ? Symbol["for"]("react.fragment") : 60107, t = n ? Symbol["for"]("react.strict_mode") : 60108, u = n ? Symbol["for"]("react.profiler") : 60114, v = n ? Symbol["for"]("react.provider") : 60109, w = n ? Symbol["for"]("react.context") : 60110, x = n ? Symbol["for"]("react.concurrent_mode") : 60111, y = n ? Symbol["for"]("react.forward_ref") : 60112, z = n ? Symbol["for"]("react.suspense") : 60113, aa = n ? Symbol["for"]("react.memo") : 60115, ba = n ? Symbol["for"]("react.lazy") : 60116, A = "function" == typeof Symbol && Symbol.iterator;
+    var k = __webpack_require__(5), n = "function" == typeof Symbol && Symbol["for"], p = n ? Symbol["for"]("react.element") : 60103, q = n ? Symbol["for"]("react.portal") : 60106, r = n ? Symbol["for"]("react.fragment") : 60107, t = n ? Symbol["for"]("react.strict_mode") : 60108, u = n ? Symbol["for"]("react.profiler") : 60114, v = n ? Symbol["for"]("react.provider") : 60109, w = n ? Symbol["for"]("react.context") : 60110, x = n ? Symbol["for"]("react.concurrent_mode") : 60111, y = n ? Symbol["for"]("react.forward_ref") : 60112, z = n ? Symbol["for"]("react.suspense") : 60113, aa = n ? Symbol["for"]("react.memo") : 60115, ba = n ? Symbol["for"]("react.lazy") : 60116, A = "function" == typeof Symbol && Symbol.iterator;
     function B(a) {
         for (var b = arguments.length - 1, d = "https://reactjs.org/docs/error-decoder.html?invariant=" + a, c = 0; c < b; c++) d += "&args[]=" + encodeURIComponent(arguments[c + 1]);
         !function(a, b, d, c, e, g, h, f) {
@@ -463,7 +463,7 @@
     module.exports = Z["default"] || Z;
 }, function(module, exports, __webpack_require__) {
     "use strict";
-    var aa = __webpack_require__(0), n = __webpack_require__(4), r = __webpack_require__(10);
+    var aa = __webpack_require__(0), n = __webpack_require__(5), r = __webpack_require__(10);
     function x(a) {
         for (var b = arguments.length - 1, c = "https://reactjs.org/docs/error-decoder.html?invariant=" + a, d = 0; d < b; d++) c += "&args[]=" + encodeURIComponent(arguments[d + 1]);
         !function(a, b, c, d, e, f, g, h) {
@@ -5150,7 +5150,7 @@
             for (var key in source) Object.prototype.hasOwnProperty.call(source, key) && (target[key] = source[key]);
         }
         return target;
-    }, _react2 = _interopRequireDefault(__webpack_require__(0)), _propTypes2 = _interopRequireDefault(__webpack_require__(1)), _TransitionGroup2 = _interopRequireDefault(__webpack_require__(16)), _CSSTransitionGroupChild2 = _interopRequireDefault(__webpack_require__(20)), _PropTypes = __webpack_require__(6);
+    }, _react2 = _interopRequireDefault(__webpack_require__(0)), _propTypes2 = _interopRequireDefault(__webpack_require__(1)), _TransitionGroup2 = _interopRequireDefault(__webpack_require__(16)), _CSSTransitionGroupChild2 = _interopRequireDefault(__webpack_require__(20)), _PropTypes = __webpack_require__(7);
     function _interopRequireDefault(obj) {
         return obj && obj.__esModule ? obj : {
             "default": obj
@@ -5419,7 +5419,7 @@
             for (var key in source) Object.prototype.hasOwnProperty.call(source, key) && (target[key] = source[key]);
         }
         return target;
-    }, _addClass2 = _interopRequireDefault(__webpack_require__(21)), _removeClass2 = _interopRequireDefault(__webpack_require__(23)), _requestAnimationFrame2 = _interopRequireDefault(__webpack_require__(24)), _properties = __webpack_require__(25), _react2 = _interopRequireDefault(__webpack_require__(0)), _propTypes2 = _interopRequireDefault(__webpack_require__(1)), _reactDom = __webpack_require__(3), _PropTypes = __webpack_require__(6);
+    }, _addClass2 = _interopRequireDefault(__webpack_require__(21)), _removeClass2 = _interopRequireDefault(__webpack_require__(23)), _requestAnimationFrame2 = _interopRequireDefault(__webpack_require__(24)), _properties = __webpack_require__(25), _react2 = _interopRequireDefault(__webpack_require__(0)), _propTypes2 = _interopRequireDefault(__webpack_require__(1)), _reactDom = __webpack_require__(3), _PropTypes = __webpack_require__(7);
     function _interopRequireDefault(obj) {
         return obj && obj.__esModule ? obj : {
             "default": obj
@@ -5538,7 +5538,7 @@
     }, getKey = function(vendor, k) {
         return vendor + (vendor ? k[0].toUpperCase() + k.substr(1) : k) + "AnimationFrame";
     };
-    _interopRequireDefault(__webpack_require__(5))["default"] && [ "", "webkit", "moz", "o", "ms" ].some(function(vendor) {
+    _interopRequireDefault(__webpack_require__(6))["default"] && [ "", "webkit", "moz", "o", "ms" ].some(function(vendor) {
         var rafKey = getKey(vendor, "request");
         if (rafKey in window) return cancel = getKey(vendor, "cancel"), raf = function(cb) {
             return window[rafKey](cb);
@@ -5556,7 +5556,7 @@
     "use strict";
     var _interopRequireDefault = __webpack_require__(2);
     exports.__esModule = !0, exports["default"] = exports.animationEnd = exports.animationDelay = exports.animationTiming = exports.animationDuration = exports.animationName = exports.transitionEnd = exports.transitionDuration = exports.transitionDelay = exports.transitionTiming = exports.transitionProperty = exports.transform = void 0;
-    var prefix, transitionEnd, animationEnd, transitionProperty, transitionDuration, transitionTiming, transitionDelay, animationName, animationDuration, animationTiming, animationDelay, _inDOM = _interopRequireDefault(__webpack_require__(5)), transform = "transform";
+    var prefix, transitionEnd, animationEnd, transitionProperty, transitionDuration, transitionTiming, transitionDelay, animationName, animationDuration, animationTiming, animationDelay, _inDOM = _interopRequireDefault(__webpack_require__(6)), transform = "transform";
     if (exports.transform = transform, exports.animationEnd = animationEnd, exports.transitionEnd = transitionEnd, 
     exports.transitionDelay = transitionDelay, exports.transitionTiming = transitionTiming, 
     exports.transitionDuration = transitionDuration, exports.transitionProperty = transitionProperty, 
@@ -5622,7 +5622,7 @@
     content.locals && (module.exports = content.locals);
 }, function(module, exports, __webpack_require__) {
     (exports = module.exports = __webpack_require__(28)(!1)).push([ module.i, "@import url(https://fonts.googleapis.com/css?family=Roboto:400,500,700,900&display=swap);", "" ]), 
-    exports.push([ module.i, "/* my style sheet */\n:root {\n    --app-bkg-color-1: #BFDDE8;\n    --app-bkg-color-2: #AABBE6;\n    --app-color-primary: #082676;\n    --app-color-white: #FFFFFF;\n\n    --border-radius: 10px;\n\n    --font-size-lg: 24px;\n    --font-size-md: 18px;\n    --font-size-sm: 14px;\n\n    --font-size-input: 38px;\n    --font-line-height: 50px;\n\n    --font-weight-reg: 400;\n    --font-weight-med: 500;\n    --font-weight-bld: 600;\n    --font-weight-blk: 700;\n\n    --box-shadow: 0px 8px 8px rgba(0,0,0,.3);\n}\n\n/* loading google fonts */\n\nbutton {\n    padding: 0;\n    border: none;\n    background: none;\n}\n\n.app-body {\n    font-family: 'Roboto', sans-serif;\n    font-size: var(--font-size-md);\n    font-weight: var(--font-weight-med);\n    line-height: var(--font-line-height);\n    margin: 0;\n    background-image: linear-gradient(to bottom right, var(--app-bkg-color-1), var(--app-bkg-color-2));\n}\n\n.app-content {\n    display: flex;\n    flex-direction: column;\n    height: 100vh;\n}\n\n.app-branding {\n    flex: 1 0 30%;\n}\n    .app-branding__logo {\n        height: 100%;\n        display: flex;\n        justify-content: center;\n        align-items: center;\n    }\n\n.app-controllers {\n    flex: 1 0 70%;\n}\n    .app-controllers__restart-btn {\n        position: absolute;\n        top: 20px;\n        left: 20px;\n    }\n\n    .app-controllers__timestamp {\n        position: absolute;\n        top: 20px;\n        right: 20px;\n        line-height: 1rem;\n    }\n\n    .app-controllers__views {\n        height: 100%;\n    }\n\n    .app-controllers__loading {\n        position: absolute;\n        width: 100%;\n        bottom: 0;\n        text-align: center;\n    }\n\n.timestamp {\n    font-size: 1em;\n}\n\n.view {\n    height: 100%;\n}\n\n    .view__content {\n        height: 100%;\n        display: flex;\n        flex-direction: column;\n    }\n\n    .view__list {\n        height: 100%;\n        display: flex;\n        flex-direction: row;\n        flex-wrap: wrap;\n    }\n\n    .view__top {\n        flex: 1 0 50%;\n        display: flex;\n        justify-content: center;\n        align-items: center;\n    }\n\n    .view__bottom {\n        flex: 1 0 50%;\n    }\n\n.module {\n    text-align: center;\n}\n    \n    .module__title {\n        font-size: var(--font-size-lg);\n        font-weight: var(--font-weight-bld);\n    }\n\n    .module__text-input {\n        border: solid 4px var(--app-color-primary);\n        background: var(--app-color-white);\n        border-radius: var(--border-radius);\n        position: relative;\n    }\n\n    .module__list {\n        display: flex;\n        flex-direction: row;\n        flex-wrap: wrap;\n        align-items: center;\n        justify-content: space-evenly;\n        height: 100%;\n    }\n\n        .module__list--confirm {\n            justify-content: center;\n        }\n\n        .module__list--confirm .module {\n            padding: 12px;\n            height: 60px;\n            margin: 18px;\n        }\n\n    .module__left,\n    .module__right {\n        flex: 1 0 50%;\n        margin: 0!important;\n    }\n\n    .module--card {\n        border: solid 4px var(--app-color-primary);\n        border-radius: var(--border-radius);\n        overflow: hidden;\n        box-shadow: var(--box-shadow);\n        background: var(--app-color-white);\n    }\n\n    .module--split {\n        display: flex;\n        flex-direction: row;\n        box-shadow: none!important;\n    }\n\n.user-search {\n    font-size: var(--font-size-input);\n    font-weight: var(--font-weight-blk);\n    width: 75vw;\n    text-align: center;\n    line-height: 92px;\n    height: 92px;\n    border: none;\n    background: none;\n    outline: none;\n    text-transform: uppercase;\n}\n\n.clear-input {\n    position: absolute;\n    top: 20px;\n    right: 10px;\n}\n\n.user-image {\n    display: block;\n}\n\n.class {\n    line-height: 34px;\n    padding: 14px;\n    max-width: 160px;\n    margin-bottom: 18px;\n}\n\n    .class__title {\n        font-size: var(--font-size-lg);\n        font-weight: var(--font-weight-bld);\n        line-height: inherit;\n    }\n\n    .class__time {\n        font-size: var(--font-size-lg);\n        font-weight: var(--font-weight-med);\n        margin-bottom: 18px;\n        line-height: inherit;\n    }\n\n    .class__instructor {\n        font-size: var(--font-size-sm);\n        font-weight: var(--font-weight-bld);\n        line-height: 18px;\n    }\n\n    .class__details {\n        font-size: var(--font-size-sm);\n        font-weight: var(--font-weight-reg);\n        line-height: 18px;\n    }\n\n.slide-enter {\n    transform: translateY(100%);\n}\n      \n.slide-enter.slide-enter-active {\n    transform: translateY(0%);\n    transition: transform 500ms ease-in;\n}\n      \n.slide-leave {\n    transform: translateY(0%);\n}\n      \n.slide-leave.slide-leave-active {\n    transform: translateY(100%);\n    transition: transform 300ms ease-in;\n}", "" ]);
+    exports.push([ module.i, "/* my style sheet */\n:root {\n    --app-bkg-color-1: #BFDDE8;\n    --app-bkg-color-2: #AABBE6;\n    --app-color-primary: #082676;\n    --app-color-white: #FFFFFF;\n\n    --border-radius: 10px;\n\n    --font-size-lg: 24px;\n    --font-size-md: 18px;\n    --font-size-sm: 14px;\n\n    --font-size-input: 38px;\n    --font-line-height: 50px;\n\n    --font-weight-reg: 400;\n    --font-weight-med: 500;\n    --font-weight-bld: 600;\n    --font-weight-blk: 700;\n\n    --box-shadow: 0px 8px 8px rgba(0,0,0,.3);\n}\n\n/* loading google fonts */\n\nbutton {\n    padding: 0;\n    border: none;\n    background: none;\n}\n\n.app-body {\n    font-family: 'Roboto', sans-serif;\n    font-size: var(--font-size-md);\n    font-weight: var(--font-weight-med);\n    line-height: var(--font-line-height);\n    margin: 0;\n    background-image: linear-gradient(to bottom right, var(--app-bkg-color-1), var(--app-bkg-color-2));\n}\n\n.app-content {\n    display: flex;\n    flex-direction: column;\n    height: 100vh;\n}\n\n.app-branding {\n    flex: 1 0 30%;\n}\n    .app-branding__logo {\n        height: 100%;\n        display: flex;\n        justify-content: center;\n        align-items: center;\n    }\n\n.app-controllers {\n    flex: 1 0 70%;\n}\n    .app-controllers__restart-btn {\n        position: absolute;\n        top: 20px;\n        left: 20px;\n    }\n\n    .app-controllers__timestamp {\n        position: absolute;\n        top: 20px;\n        right: 20px;\n        line-height: 1rem;\n    }\n\n    .app-controllers__views {\n        height: 100%;\n    }\n\n    .app-controllers__loading {\n        position: absolute;\n        width: 100%;\n        bottom: 0;\n        text-align: center;\n        padding: 20px;\n        box-sizing: border-box;\n    }\n\n.timestamp {\n    font-size: 1em;\n}\n\n.view {\n    height: 100%;\n}\n\n    .view__content {\n        height: 100%;\n        display: flex;\n        flex-direction: column;\n    }\n\n    .view__list {\n        height: 100%;\n        display: flex;\n        flex-direction: row;\n        flex-wrap: wrap;\n    }\n\n    .view__top {\n        flex: 1 0 50%;\n        display: flex;\n        justify-content: center;\n        align-items: center;\n    }\n\n    .view__bottom {\n        flex: 1 0 50%;\n    }\n\n.module {\n    text-align: center;\n}\n    \n    .module__title {\n        font-size: var(--font-size-lg);\n        font-weight: var(--font-weight-bld);\n    }\n\n    .module__text-input {\n        border: solid 4px var(--app-color-primary);\n        background: var(--app-color-white);\n        border-radius: var(--border-radius);\n        position: relative;\n    }\n\n    .module__list {\n        display: flex;\n        flex-direction: row;\n        flex-wrap: wrap;\n        align-items: center;\n        justify-content: space-evenly;\n        height: 100%;\n    }\n\n        .module__list--confirm {\n            justify-content: center;\n        }\n\n        .module__list--confirm .module {\n            padding: 12px;\n            height: 60px;\n            margin: 18px;\n        }\n\n    .module__left,\n    .module__right {\n        flex: 1 0 50%;\n        margin: 0!important;\n    }\n\n    .module--card {\n        border: solid 4px var(--app-color-primary);\n        border-radius: var(--border-radius);\n        overflow: hidden;\n        box-shadow: var(--box-shadow);\n        background: var(--app-color-white);\n    }\n\n    .module--split {\n        display: flex;\n        flex-direction: row;\n        box-shadow: none!important;\n    }\n\n.user-search {\n    font-size: var(--font-size-input);\n    font-weight: var(--font-weight-blk);\n    width: 75vw;\n    text-align: center;\n    line-height: 92px;\n    height: 92px;\n    border: none;\n    background: none;\n    outline: none;\n    text-transform: uppercase;\n}\n\n.clear-input {\n    position: absolute;\n    top: 20px;\n    right: 10px;\n}\n\n.user-image {\n    display: block;\n}\n\n.class {\n    line-height: 34px;\n    padding: 14px;\n    max-width: 160px;\n    margin-bottom: 18px;\n}\n\n    .class__title {\n        font-size: var(--font-size-lg);\n        font-weight: var(--font-weight-bld);\n        line-height: inherit;\n    }\n\n    .class__time {\n        font-size: var(--font-size-lg);\n        font-weight: var(--font-weight-med);\n        margin-bottom: 18px;\n        line-height: inherit;\n    }\n\n    .class__instructor {\n        font-size: var(--font-size-sm);\n        font-weight: var(--font-weight-bld);\n        line-height: 18px;\n    }\n\n    .class__details {\n        font-size: var(--font-size-sm);\n        font-weight: var(--font-weight-reg);\n        line-height: 18px;\n    }\n\n.slide-enter {\n    transform: translateY(100%);\n}\n      \n.slide-enter.slide-enter-active {\n    transform: translateY(0%);\n    transition: transform 500ms ease-in;\n}\n      \n.slide-leave {\n    transform: translateY(0%);\n}\n      \n.slide-leave.slide-leave-active {\n    transform: translateY(100%);\n    transition: transform 300ms ease-in;\n}\n\n.show-enter {\n    opacity: .01;\n}\n      \n.show-enter.show-enter-active {\n    opacity: 1;\n    transition: opacity 500ms ease-in;\n}\n      \n.show-leave {\n    opacity: 1;\n}\n      \n.show-leave.show-leave-active {\n    opacity: .01;\n    transition: opacity 300ms ease-in;\n}\n\n.loader-bar {\n    width: 100%;\n    height: 20px;\n    border: 1px solid var(--app-bkg-color-2);\n    border-radius: 3px;\n    background-image: \n        repeating-linear-gradient(\n        -45deg,\n        var(--app-bkg-color-2),\n        var(--app-bkg-color-2) 11px,\n        var(--app-color-white) 10px,\n        var(--app-color-white) 20px /* determines size */\n        );\n    background-size: 28px 28px;\n    animation: move .5s linear infinite;\n}\n  \n@keyframes move {\n    0% {\n        background-position: 0 0;\n    }\n    100% {\n        background-position: 28px 0;\n    }\n}", "" ]);
 }, function(module, exports) {
     module.exports = function(useSourceMap) {
         var list = [];
@@ -5834,8 +5834,8 @@
 }, function(module, __webpack_exports__, __webpack_require__) {
     "use strict";
     __webpack_require__.r(__webpack_exports__);
-    var react = __webpack_require__(0), react_default = __webpack_require__.n(react), react_dom = __webpack_require__(3), react_dom_default = __webpack_require__.n(react_dom), react_addons_css_transition_group = __webpack_require__(7), react_addons_css_transition_group_default = __webpack_require__.n(react_addons_css_transition_group);
-    const monthLong = [ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" ], devMemberList = [ [ 2890, "John", "Pallas", "https://pixabay.com/get/55e1d54b4b5bb10ff3d89938b977692b083edbe35755724f7d2e7e/businessman-310819_640.png" ], [ 2891, "Jake", "Pallas", "https://pixabay.com/get/55e1d54b4b5bb10ff3d89938b977692b083edbe35755724f7d2e7e/businessman-310819_640.png" ], [ 2892, "Stacey", "Pallas", "https://pixabay.com/get/54e9d0404255b10ff3d89938b977692b083edbe35755724d77297a/teacher-295387_640.png" ] ], devCalenderClassList = [ {
+    var react = __webpack_require__(0), react_default = __webpack_require__.n(react), react_dom = __webpack_require__(3), react_dom_default = __webpack_require__.n(react_dom), react_addons_css_transition_group = __webpack_require__(4), react_addons_css_transition_group_default = __webpack_require__.n(react_addons_css_transition_group);
+    const monthLong = [ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" ], devMemberList = [ [ 2890, "John", "Pallas", "https://via.placeholder.com/300x300.png?text=Member+Photo+Here" ], [ 2891, "Jake", "Pallas", "https://via.placeholder.com/300x300.png?text=Member+Photo+Here" ], [ 2892, "Stacey", "Pallas", "https://via.placeholder.com/300x300.png?text=Member+Photo+Here" ] ], devCalenderClassList = [ {
         id: 1,
         start: "Sat Dec 30 12:00:00 GMT-05:00 1899",
         end: "Sat Dec 30 15:00:00 GMT-05:00 1899",
@@ -5980,7 +5980,7 @@
     var server = serverMethods;
     __webpack_require__(26);
     react_dom_default.a.render(react_default.a.createElement(function() {
-        const [member, setMember] = Object(react["useState"])([]), [gymClass, setGymClass] = Object(react["useState"])({}), [memberList, setMemberList] = Object(react["useState"])([]), [gymClassList, setGymClassList] = Object(react["useState"])([]), [confirmed, setConfirmed] = Object(react["useState"])(!1), [loading, setLoading] = Object(react["useState"])(!1), finalConfirmHandler = (event, value = !1) => {
+        const [member, setMember] = Object(react["useState"])([]), [gymClass, setGymClass] = Object(react["useState"])({}), [memberList, setMemberList] = Object(react["useState"])([]), [gymClassList, setGymClassList] = Object(react["useState"])([]), [confirmed, setConfirmed] = Object(react["useState"])(!1), [loading, setLoading] = Object(react["useState"])(!1), [empty, setEmpty] = Object(react["useState"])(!1), finalConfirmHandler = (event, value = !1) => {
             let donezo = () => {
                 setLoading(!0), setConfirmed(!0), setTimeout(() => resetAppHandler(), 3e3);
             };
@@ -5999,7 +5999,7 @@
         }, react_default.a.createElement("div", {
             className: "app-branding__logo"
         }, react_default.a.createElement("img", {
-            src: "https://pixabay.com/get/57e0d14b4257ae14f1dc8460825668204022dfe05555754a76287cdd/gym-1048852_640.png",
+            src: "https://via.placeholder.com/400x400.png?text=Gym+Logo+Here",
             width: "200",
             height: "200",
             alt: "gym logo"
@@ -6023,7 +6023,9 @@
         }, loading && react_default.a.createElement("div", {
             key: 1,
             className: "app-controllers__loading"
-        }, "This is the loading animation")), react_default.a.createElement("div", {
+        }, react_default.a.createElement("div", {
+            className: "loader-bar"
+        }))), react_default.a.createElement("div", {
             className: "app-controllers__views"
         }, !member.length > 0 && !Object.values(gymClass).length > 0 && react_default.a.createElement("section", {
             className: "view view--user"
@@ -6037,8 +6039,8 @@
             className: "module__title"
         }, "Please enter your LAST NAME or MEMBER NUMBER."), react_default.a.createElement(UserSearch, {
             searchHandler: (event, value = "") => {
-                setLoading(!0), google ? server.getRowsInSheetByColumn("Members", isNaN(value) ? 2 : 0, value).then(value => {
-                    setLoading(!1), console.log("members", value), setMemberList(value);
+                setLoading(!0), setEmpty(!1), setMemberList([]), google ? server.getRowsInSheetByColumn("Members", isNaN(value) ? 2 : 0, value).then(value => {
+                    setLoading(!1), value.length > 0 ? setMemberList(value) : setEmpty(!0);
                 })["catch"](alert) : (setMemberList(devMemberList), setTimeout(() => setLoading(!1), 2e3));
             }
         }))), react_default.a.createElement("div", {
@@ -6057,7 +6059,16 @@
             })(0, member),
             key: member[0].toString(),
             src: member[3]
-        }))))))), member.length > 0 && !Object.values(gymClass).length > 0 && react_default.a.createElement("section", {
+        })))), react_default.a.createElement(react_addons_css_transition_group_default.a, {
+            transitionName: "show",
+            transitionEnterTimeout: 500,
+            transitionLeaveTimeout: 300
+        }, empty && react_default.a.createElement("div", {
+            key: 1,
+            className: "module"
+        }, react_default.a.createElement("div", {
+            className: "module__title"
+        }, "No members found, please try again.")))))), member.length > 0 && !Object.values(gymClass).length > 0 && react_default.a.createElement("section", {
             className: "view view--class"
         }, react_default.a.createElement("div", {
             className: "module__list"

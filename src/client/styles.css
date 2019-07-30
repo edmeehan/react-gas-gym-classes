@@ -81,6 +81,8 @@ button {
         width: 100%;
         bottom: 0;
         text-align: center;
+        padding: 20px;
+        box-sizing: border-box;
     }
 
 .timestamp {
@@ -241,4 +243,48 @@ button {
 .slide-leave.slide-leave-active {
     transform: translateY(100%);
     transition: transform 300ms ease-in;
+}
+
+.show-enter {
+    opacity: .01;
+}
+      
+.show-enter.show-enter-active {
+    opacity: 1;
+    transition: opacity 500ms ease-in;
+}
+      
+.show-leave {
+    opacity: 1;
+}
+      
+.show-leave.show-leave-active {
+    opacity: .01;
+    transition: opacity 300ms ease-in;
+}
+
+.loader-bar {
+    width: 100%;
+    height: 20px;
+    border: 1px solid var(--app-bkg-color-2);
+    border-radius: 3px;
+    background-image: 
+        repeating-linear-gradient(
+        -45deg,
+        var(--app-bkg-color-2),
+        var(--app-bkg-color-2) 11px,
+        var(--app-color-white) 10px,
+        var(--app-color-white) 20px /* determines size */
+        );
+    background-size: 28px 28px;
+    animation: move .5s linear infinite;
+}
+  
+@keyframes move {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 28px 0;
+    }
 }

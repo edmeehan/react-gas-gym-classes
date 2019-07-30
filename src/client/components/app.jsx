@@ -15,16 +15,22 @@ export default function App() {
   const [gymClassList, setGymClassList] = useState([]);
   const [confirmed, setConfirmed] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [empty, setEmpty] = useState(false);
 
   const memberSearchHandler = (event, value = '') => {
     setLoading(true);
+    setEmpty(false);
+    setMemberList([]);
     // ----------------- env conditional
     if (process.env.NODE_ENV === 'production' && google) {
       server.getRowsInSheetByColumn('Members', (!isNaN(value)) ? 0 : 2, value)
         .then((value) => {
           setLoading(false);
-          console.log('members', value);
-          setMemberList(value);
+          if (value.length > 0) {
+            setMemberList(value);
+          } else {
+            setEmpty(true);
+          }
         })
         .catch(alert);
     } else {
@@ -93,7 +99,7 @@ export default function App() {
     <div className="app-content">
       <section className="app-branding">
         <div className="app-branding__logo">
-          <img src="https://pixabay.com/get/57e0d14b4257ae14f1dc8460825668204022dfe05555754a76287cdd/gym-1048852_640.png" width="200" height="200" alt="gym logo"/>
+          <img src="https://via.placeholder.com/400x400.png?text=Gym+Logo+Here" width="200" height="200" alt="gym logo"/>
         </div>
       </section>
       <div className="app-controllers">
@@ -115,7 +121,7 @@ export default function App() {
           transitionLeaveTimeout={300}>
           {loading &&
           <div key={1} className="app-controllers__loading">
-            This is the loading animation
+            <div className="loader-bar"></div>
           </div>
           }
         </ReactCSSTransitionGroup>
@@ -146,6 +152,16 @@ export default function App() {
                       </div>
                     </div>
                   }
+                  <ReactCSSTransitionGroup
+                    transitionName="show"
+                    transitionEnterTimeout={500}
+                    transitionLeaveTimeout={300}>
+                    {empty &&
+                    <div key={1} className="module">
+                      <div className="module__title">No members found, please try again.</div>
+                    </div>
+                    }
+                  </ReactCSSTransitionGroup>
                 </div>
               </div>
             </section>
