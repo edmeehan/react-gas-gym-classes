@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 export default function UserCard(props) {
   return (
-    <div className="module module--card" onClick={props.clickHandler}>
+    <div className="module module--card module--img" onClick={props.clickHandler}>
       <DriveImg
         width="150"
         height="150"

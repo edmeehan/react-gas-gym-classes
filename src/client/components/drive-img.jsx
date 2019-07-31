@@ -13,25 +13,35 @@ export default function DriveImg(props) {
         .catch(alert);
     } else {
       // dev pixel
-      setImg('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==');
+      setTimeout(() => setImg('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg=='), 2500);
     }
   });
 
+  const styles = {
+    width: `${props.width}px`,
+    height: `${props.height}px`,
+  };
+
   return (
-    <ReactCSSTransitionGroup
-      transitionName="show"
-      transitionEnterTimeout={500}
-      transitionLeaveTimeout={300}>
-      {img &&
-        <img
-          key="1"
-          src={`data:image/png;base64,${img}`}
-          width={props.width}
-          height={props.height}
-          className={props.class}
-          alt={props.alt}/>
+    <div className="img" style={styles}>
+      <ReactCSSTransitionGroup
+        transitionName="show"
+        transitionEnterTimeout={500}
+        transitionLeaveTimeout={300}>
+        {img &&
+          <img
+            key="1"
+            src={`data:image/png;base64,${img}`}
+            width={props.width}
+            height={props.height}
+            className={props.class}
+            alt={props.alt}/>
+        }
+      </ReactCSSTransitionGroup>
+      {!img &&
+        <div className="loader-bar loader-bar--img"></div>
       }
-    </ReactCSSTransitionGroup>
+    </div>
   );
 }
 
