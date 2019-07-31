@@ -1,5 +1,26 @@
-const getRowsInSheetByColumn = (sheetName, col, data, ignoreCase = true) => {
-  let rows = getSheet(sheetName);
+import config from './config';
+
+const getImage = (name, isMemberPhoto = false) => {
+  let folderName = isMemberPhoto
+    ? config.drive.members_photos_folder_name
+    : config.drive.project_folder_name;
+  let folders = DriveApp.getFoldersByName(folderName);
+  let fileBytes = null;
+
+  while (folders.hasNext()) {
+    let files = folders.next().getFilesByName(name);
+    while (files.hasNext()) {
+      fileBytes = files.next().getBlob().getBytes();
+    }
+  }
+
+  return fileBytes
+    ? Utilities.base64Encode(fileBytes)
+    : false;
+};
+
+const getMembers = (col, data, ignoreCase = true) => {
+  let rows = getSheet(config.spreadsheets.members_sheet_name);
   rows.shift(); // remove the first item with all the labels
 
   return JSON.parse(JSON.stringify(rows.filter((item) => {
@@ -12,66 +33,12 @@ const getRowsInSheetByColumn = (sheetName, col, data, ignoreCase = true) => {
   })));
 };
 
-const getRowsInSheet = (sheetName, data, ignoreCase = true) => {
-  let rows = getSheet(sheetName);
-  rows.shift(); // remove the first item with all the labels
-
-  return JSON.parse(JSON.stringify(rows.filter((item) => {
-    let testValue = item.join('#');
-    let value = data + '';
-
-    return (ignoreCase)
-      ? testValue.toUpperCase().indexOf(value.toUpperCase()) !== -1
-      : testValue.indexOf(value) !== -1;
-  })));
-};
-
-// this method was used for schedules in a sheet
-// but has been replaced with the Calendar API
-const getCurrentGymClasses = () => {
-  let rows = getSheet('Schedule');
+const getCurrentCalenderEvents = (rangeInHours) => {
+  let range = rangeInHours ? rangeInHours : config.calendar.rangeInHours;
+  let name = config.calendar.name;
+  let calendar = CalendarApp.getCalendarsByName(name);
   let now = new Date();
-  let timeMath = (dateObj) => (dateObj.getHours() * 100) + dateObj.getMinutes();
-  rows.shift();
-
-  return JSON.parse(JSON.stringify(rows.filter((item) => {
-    let today = false;
-
-    // check if daily class
-    if (item[1] === '' && item[2] === '') {
-      today = true;
-    }
-
-    // check if day of week class
-    if (item[2] === now.getDay()) {
-      today = true;
-    }
-
-    // check if special event class
-    if (item[1]) {
-      let date = new Date(item[1]);
-      if ((date.getFullYear() === now.getFullYear()) &&
-        ((date.getMonth() === now.getMonth())) &&
-        ((date.getDate() === now.getDate()))
-      ) {
-        today = true;
-      }
-    }
-
-    // if the class is today - show classes that have not happened yet
-    if (today) {
-      let end = timeMath(new Date(item[4]));
-      let stamp = timeMath(now);
-
-      return (stamp < end - 5);
-    }
-  })));
-};
-
-const getCurrentCalenderEvents = (rangeInHours = 2) => {
-  let calendar = CalendarApp.getCalendarsByName('React App Gym Class Schedule');
-  let now = new Date();
-  let fromNow = new Date(now.getTime() + (rangeInHours * 60 * 60 * 1000));
+  let fromNow = new Date(now.getTime() + (range * 60 * 60 * 1000));
   let events = calendar[0].getEvents(now, fromNow).map((event) => {
     return {
       id: event.getId(),
@@ -86,8 +53,9 @@ const getCurrentCalenderEvents = (rangeInHours = 2) => {
 };
 
 const setAttendance = (newRow = []) => {
+  let name = config.spreadsheets.attendance_sheet_name;
   newRow.unshift(new Date());
-  getSheet('Attendance', false).appendRow(newRow);
+  getSheet(name, false).appendRow(newRow);
   return true;
 };
 
@@ -99,8 +67,7 @@ const getSheet = (sheetName, getValues = true) => {
 
 export {
   getCurrentCalenderEvents,
-  getRowsInSheetByColumn,
-  // getCurrentGymClasses,
-  getRowsInSheet,
+  getMembers,
+  getImage,
   setAttendance,
 };

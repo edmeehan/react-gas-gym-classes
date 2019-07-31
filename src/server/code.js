@@ -3,8 +3,7 @@ import * as methods from './app.js';
 
 // Expose public functions
 global.doGet = routes.doGet;
-global.getRowsInSheetByColumn = methods.getRowsInSheetByColumn;
-// global.getCurrentGymClasses = methods.getCurrentGymClasses;
 global.getCurrentCalenderEvents = methods.getCurrentCalenderEvents;
-global.getRowsInSheet = methods.getRowsInSheet;
+global.getMembers = methods.getMembers;
+global.getImage = methods.getImage;
 global.setAttendance = methods.setAttendance;

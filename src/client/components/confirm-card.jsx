@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import DriveImg from './drive-img';
 import {displayTime} from '../utilities';
 
 export default function ConfirmCard(props) {
@@ -12,9 +13,13 @@ export default function ConfirmCard(props) {
         <div className="class__details" dangerouslySetInnerHTML={{__html: props.details}}></div>
       </div>
       <div className="module__right">
-        <img width="150" height="150" alt="user image"
-          className="user-image"
-          src={props.src}/>
+        <DriveImg
+          width="150"
+          height="150"
+          alt="user image"
+          class="user-image"
+          member={true}
+          src={props.src}></DriveImg>
       </div>
     </div>
   );

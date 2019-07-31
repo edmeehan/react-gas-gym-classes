@@ -1,10 +1,10 @@
 function doGet() {
 }
-function getRowsInSheetByColumn() {
-}
 function getCurrentCalenderEvents() {
 }
-function getRowsInSheet() {
+function getMembers() {
+}
+function getImage() {
 }
 function setAttendance() {
 }!function(e, a) {
@@ -56,29 +56,36 @@ function setAttendance() {
     }, __webpack_require__.p = "", __webpack_require__(__webpack_require__.s = 2);
 }([ function(module, __webpack_exports__, __webpack_require__) {
     "use strict";
+    var config_drive = {
+        project_folder_name: "React Project Gym Classes",
+        members_photos_folder_name: "Member Photos"
+    }, config_spreadsheets = {
+        members_sheet_name: "Members",
+        attendance_sheet_name: "Attendance"
+    }, config_calendar = {
+        name: "React App Gym Class Schedule",
+        rangeInHours: 2
+    };
     __webpack_require__.d(__webpack_exports__, "a", function() {
-        return getCurrentCalenderEvents;
+        return app_getCurrentCalenderEvents;
     }), __webpack_require__.d(__webpack_exports__, "c", function() {
-        return getRowsInSheetByColumn;
+        return app_getMembers;
     }), __webpack_require__.d(__webpack_exports__, "b", function() {
-        return getRowsInSheet;
+        return app_getImage;
     }), __webpack_require__.d(__webpack_exports__, "d", function() {
-        return setAttendance;
+        return app_setAttendance;
     });
-    var getRowsInSheetByColumn = function(sheetName, col, data) {
-        var ignoreCase = !(arguments.length > 3 && arguments[3] !== undefined) || arguments[3], rows = getSheet(sheetName);
+    var app_getImage = function(name) {
+        for (var folderName = arguments.length > 1 && arguments[1] !== undefined && arguments[1] ? config_drive.members_photos_folder_name : config_drive.project_folder_name, folders = DriveApp.getFoldersByName(folderName), fileBytes = null; folders.hasNext(); ) for (var files = folders.next().getFilesByName(name); files.hasNext(); ) fileBytes = files.next().getBlob().getBytes();
+        return !!fileBytes && Utilities.base64Encode(fileBytes);
+    }, app_getMembers = function(col, data) {
+        var ignoreCase = !(arguments.length > 2 && arguments[2] !== undefined) || arguments[2], rows = getSheet(config_spreadsheets.members_sheet_name);
         return rows.shift(), JSON.parse(JSON.stringify(rows.filter(function(item) {
             var testValue = item[col] + "", value = data + "";
             return ignoreCase ? testValue.toUpperCase() === value.toUpperCase() : testValue === value;
         })));
-    }, getRowsInSheet = function(sheetName, data) {
-        var ignoreCase = !(arguments.length > 2 && arguments[2] !== undefined) || arguments[2], rows = getSheet(sheetName);
-        return rows.shift(), JSON.parse(JSON.stringify(rows.filter(function(item) {
-            var testValue = item.join("#"), value = data + "";
-            return ignoreCase ? -1 !== testValue.toUpperCase().indexOf(value.toUpperCase()) : -1 !== testValue.indexOf(value);
-        })));
-    }, getCurrentCalenderEvents = function() {
-        var rangeInHours = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 2, calendar = CalendarApp.getCalendarsByName("React App Gym Class Schedule"), now = new Date(), fromNow = new Date(now.getTime() + 60 * rangeInHours * 60 * 1e3), events = calendar[0].getEvents(now, fromNow).map(function(event) {
+    }, app_getCurrentCalenderEvents = function(rangeInHours) {
+        var range = rangeInHours || config_calendar.rangeInHours, name = config_calendar.name, calendar = CalendarApp.getCalendarsByName(name), now = new Date(), fromNow = new Date(now.getTime() + 60 * range * 60 * 1e3), events = calendar[0].getEvents(now, fromNow).map(function(event) {
             return {
                 id: event.getId(),
                 title: event.getTitle(),
@@ -88,10 +95,9 @@ function setAttendance() {
             };
         });
         return JSON.parse(JSON.stringify(events));
-    }, setAttendance = function() {
-        var newRow = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
-        return newRow.unshift(new Date()), getSheet("Attendance", !1).appendRow(newRow), 
-        !0;
+    }, app_setAttendance = function() {
+        var newRow = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [], name = config_spreadsheets.attendance_sheet_name;
+        return newRow.unshift(new Date()), getSheet(name, !1).appendRow(newRow), !0;
     }, getSheet = function(sheetName) {
         var getValues = !(arguments.length > 1 && arguments[1] !== undefined) || arguments[1], sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName(sheetName);
         return getValues ? sheet.getDataRange().getValues() : sheet;
@@ -109,8 +115,8 @@ function setAttendance() {
     "use strict";
     __webpack_require__.r(__webpack_exports__), function(global) {
         var _app_routes_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1), _app_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(0);
-        global.doGet = _app_routes_js__WEBPACK_IMPORTED_MODULE_0__["a"], global.getRowsInSheetByColumn = _app_js__WEBPACK_IMPORTED_MODULE_1__["c"], 
-        global.getCurrentCalenderEvents = _app_js__WEBPACK_IMPORTED_MODULE_1__["a"], global.getRowsInSheet = _app_js__WEBPACK_IMPORTED_MODULE_1__["b"], 
+        global.doGet = _app_routes_js__WEBPACK_IMPORTED_MODULE_0__["a"], global.getCurrentCalenderEvents = _app_js__WEBPACK_IMPORTED_MODULE_1__["a"], 
+        global.getMembers = _app_js__WEBPACK_IMPORTED_MODULE_1__["c"], global.getImage = _app_js__WEBPACK_IMPORTED_MODULE_1__["b"], 
         global.setAttendance = _app_js__WEBPACK_IMPORTED_MODULE_1__["d"];
     }.call(this, __webpack_require__(3));
 }, function(module, exports) {

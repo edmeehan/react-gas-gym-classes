@@ -5,6 +5,7 @@ import UserSearch from './user-search';
 import UserCard from './user-card';
 import ClassCard from './class-card';
 import ConfirmCard from './confirm-card';
+import DriveImg from './drive-img';
 import server from '../server';
 import {devMemberList, devCalenderClassList} from '../utilities';
 
@@ -23,7 +24,7 @@ export default function App() {
     setMemberList([]);
     // ----------------- env conditional
     if (process.env.NODE_ENV === 'production' && google) {
-      server.getRowsInSheetByColumn('Members', (!isNaN(value)) ? 0 : 2, value)
+      server.getMembers((!isNaN(value)) ? 0 : 2, value)
         .then((value) => {
           setLoading(false);
           if (value.length > 0) {
@@ -45,7 +46,7 @@ export default function App() {
       setLoading(true);
       // ----------------- env conditional
       if (process.env.NODE_ENV === 'production' && google) {
-        server.getCurrentCalenderEvents(2)
+        server.getCurrentCalenderEvents()
           .then((value) => {
             setLoading(false);
             setGymClassList(value);
@@ -99,7 +100,7 @@ export default function App() {
     <div className="app-content">
       <section className="app-branding">
         <div className="app-branding__logo">
-          <img src="https://via.placeholder.com/400x400.png?text=Gym+Logo+Here" width="200" height="200" alt="gym logo"/>
+          <DriveImg src="gym-logo.png" width="200" height="200" alt="gym logo"></DriveImg>
         </div>
       </section>
       <div className="app-controllers">
@@ -120,7 +121,7 @@ export default function App() {
           transitionEnterTimeout={500}
           transitionLeaveTimeout={300}>
           {loading &&
-          <div key={1} className="app-controllers__loading">
+          <div key="1" className="app-controllers__loading">
             <div className="loader-bar"></div>
           </div>
           }
@@ -147,7 +148,7 @@ export default function App() {
                           <UserCard
                             clickHandler={(e) => memberSelectHandler(e, member)}
                             key={member[0].toString()}
-                            src={member[3]}></UserCard>
+                            src={`${member[2]}_${member[1]}_${member[0]}.png`}></UserCard>
                         )}
                       </div>
                     </div>
@@ -157,7 +158,7 @@ export default function App() {
                     transitionEnterTimeout={500}
                     transitionLeaveTimeout={300}>
                     {empty &&
-                    <div key={1} className="module">
+                    <div key="1" className="module">
                       <div className="module__title">No members found, please try again.</div>
                     </div>
                     }
@@ -194,7 +195,7 @@ export default function App() {
                     time={[gymClass.start, gymClass.end]}
                     // instructor={gymClass[6]}
                     details={gymClass.details}
-                    src={member[3]}></ConfirmCard>
+                    src={`${member[2]}_${member[1]}_${member[0]}.png`}></ConfirmCard>
                 </div>
                 <div className="view__bottom">
                   {!confirmed ? (
