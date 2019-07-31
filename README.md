@@ -5,6 +5,14 @@ I discovered Google App Scripts by accident in 2017 while working in Google Shee
 * Google Sheet - https://docs.google.com/spreadsheets/d/137AledrNYTQv7ZOODO-XK9O6JTT0k2kYMAPfYhzuXio/edit?usp=sharing
 * Project Drive Folder - https://drive.google.com/drive/folders/1Vk1yb4O-Z62BmE48ZOFY_S9LwIcOdc4z?usp=sharing
 
+## Basic Info
+The app uses a google sheet to fetch member information and add an attendance entry when a member selects a class. The class schedule is fetched from a Google Calendar, and gym logo and member photos are fetched from a Google Drive folder.
+
+Google Service API Scope used:
+* spreadsheets - read, write
+* calendar - read
+* drive - read
+
 ![App Screen Shot](https://i.imgur.com/kgRvwtJ.png)
 
 ### Project Boilerplate
