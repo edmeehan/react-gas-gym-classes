@@ -4,6 +4,7 @@ I discovered Google App Scripts by accident in 2017 while working in Google Shee
 * Demo - https://script.google.com/macros/s/AKfycbxie4-nC-H8W_sW1Qh55HAvXeMD1195-NUSilcoB14VwrQPWGeQ/exec
 * Google Sheet - https://docs.google.com/spreadsheets/d/137AledrNYTQv7ZOODO-XK9O6JTT0k2kYMAPfYhzuXio/edit?usp=sharing
 * Project Drive Folder - https://drive.google.com/drive/folders/1Vk1yb4O-Z62BmE48ZOFY_S9LwIcOdc4z?usp=sharing
+* Calendar - https://calendar.google.com/calendar/embed?src=au7b6noor5c1np0dafloas4j68%40group.calendar.google.com&ctz=America%2FLos_Angeles
 
 ## Basic Info
 The app uses a google sheet to fetch member information and add an attendance entry when a member selects a class. The class schedule is fetched from a Google Calendar, and gym logo and member photos are fetched from a Google Drive folder.
