@@ -171,16 +171,19 @@ export default function App() {
           {/* CLASS SELECTION */}
           {member.length > 0 && !Object.values(gymClass).length > 0 &&
             <section className="view view--class">
-              <div className="module__list">
-                {gymClassList.length > 0 && gymClassList.map((gymClass) =>
-                  <ClassCard
-                    clickHandler={(e) => gymClassSelectHandler(e, gymClass)}
-                    key={gymClass.id.toString()}
-                    title={gymClass.title}
-                    time={[gymClass.start, gymClass.end]}
-                    // instructor={gymClass[6]}
-                    details={gymClass.details}></ClassCard>
-                )}
+              <div className="module">
+                <div className="module__title">Tap to select class.</div>
+                <div className="module__list">
+                  {gymClassList.length > 0 && gymClassList.map((gymClass) =>
+                    <ClassCard
+                      clickHandler={(e) => gymClassSelectHandler(e, gymClass)}
+                      key={gymClass.id.toString()}
+                      title={gymClass.title}
+                      time={[gymClass.start, gymClass.end]}
+                      // instructor={gymClass[6]}
+                      details={gymClass.details}></ClassCard>
+                  )}
+                </div>
               </div>
             </section>
           }

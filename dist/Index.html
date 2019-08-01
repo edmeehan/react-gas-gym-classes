@@ -6108,6 +6108,10 @@
         }, "No members found, please try again.")))))), member.length > 0 && !Object.values(gymClass).length > 0 && react_default.a.createElement("section", {
             className: "view view--class"
         }, react_default.a.createElement("div", {
+            className: "module"
+        }, react_default.a.createElement("div", {
+            className: "module__title"
+        }, "Tap to select class."), react_default.a.createElement("div", {
             className: "module__list"
         }, gymClassList.length > 0 && gymClassList.map(gymClass => react_default.a.createElement(ClassCard, {
             clickHandler: e => ((event, value = {}) => {
@@ -6117,7 +6121,7 @@
             title: gymClass.title,
             time: [ gymClass.start, gymClass.end ],
             details: gymClass.details
-        })))), member.length > 0 && Object.values(gymClass).length > 0 && react_default.a.createElement("section", {
+        }))))), member.length > 0 && Object.values(gymClass).length > 0 && react_default.a.createElement("section", {
             className: "view view--confirm"
         }, react_default.a.createElement("div", {
             className: "view__content"
