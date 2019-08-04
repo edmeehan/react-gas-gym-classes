@@ -19,7 +19,7 @@
     --font-weight-bld: 600;
     --font-weight-blk: 700;
 
-    --box-shadow: 0px 8px 8px rgba(0,0,0,.3);
+    --box-shadow: inset 0px -2px 3px 2px rgba(0,0,0,.35);
 }
 
 /* loading google fonts */
@@ -63,6 +63,7 @@ button {
         position: absolute;
         top: 20px;
         left: 20px;
+        padding: 8px;
     }
 
     .app-controllers__timestamp {
@@ -159,7 +160,7 @@ button {
     }
 
     .module--card {
-        border: solid 4px var(--app-color-primary);
+        border: solid 2px var(--app-color-primary);
         border-radius: var(--border-radius);
         overflow: hidden;
         box-shadow: var(--box-shadow);
@@ -176,6 +177,8 @@ button {
         display: flex;
         flex-direction: row;
         box-shadow: none!important;
+        border: none;
+        background: rgba(255,255,255,.3);
     }
 
 .user-search {

@@ -105,7 +105,7 @@ export default function App() {
       </section>
       <div className="app-controllers">
         {(member.length > 0 || Object.values(gymClass).length > 0) &&
-          <button className="app-controllers__restart-btn"
+          <button className="app-controllers__restart-btn module--card"
             onClick={resetAppHandler}>
             <svg width="56px" height="56px" viewBox="0 0 56 56">
               <use xlinkHref="#icon-cancel"></use>
